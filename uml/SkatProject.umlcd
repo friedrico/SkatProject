@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.yattasolutions.uml.diagrams.classifier:ClassDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.yattasolutions.uml.diagrams.classifier="http://ns.yatta-solutions.com/umllab/diagrams/classifier/0.9.0" xmi:id="_7u4WIBq8EeGuC7KEJfOEoA">
+  <modelElement href="SkatProject.uml#_7tIpsBq8EeGuC7KEJfOEoA"/>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_np5IYBq9EeGuC7KEJfOEoA" sourceAnchor="122.0,0.0" targetAnchor="218.0,24.0" source="_9sqRcBq8EeGuC7KEJfOEoA" target="_9sqRcBq8EeGuC7KEJfOEoA">
+    <modelElement href="SkatProject.uml#_npxzoBq9EeGuC7KEJfOEoA"/>
+    <visualProperties xmi:id="_np5IYRq9EeGuC7KEJfOEoA"/>
+    <nameVisual xmi:id="_np5IYhq9EeGuC7KEJfOEoA" text="">
+      <visualProperties xmi:id="_nwYK4Bq9EeGuC7KEJfOEoA" position="-140.5,-7.5"/>
+    </nameVisual>
+    <bendpoints xmi:id="_BicwMCzlEeGJzuCoC9GARg" sourceY="-54" targetX="-96" targetY="-78"/>
+    <bendpoints xmi:id="_BicwMSzlEeGJzuCoC9GARg" sourceX="273" sourceY="-54" targetX="177" targetY="-78"/>
+    <bendpoints xmi:id="_BidXQCzlEeGJzuCoC9GARg" sourceX="273" sourceY="24" targetX="177"/>
+    <sourceRole xmi:id="_np5IYxq9EeGuC7KEJfOEoA" name="leftNeighbor">
+      <modelElement href="SkatProject.uml#_npxzoRq9EeGuC7KEJfOEoA"/>
+      <visualProperties xmi:id="_nwW8wBq9EeGuC7KEJfOEoA" position="5.0,-97.49999999999999"/>
+      <visibility xmi:id="_np5IZBq9EeGuC7KEJfOEoA" label="+"/>
+      <cardinality xmi:id="_np5IZRq9EeGuC7KEJfOEoA" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_np5IZhq9EeGuC7KEJfOEoA" name="rightNeighbor" navigable="true">
+      <modelElement href="SkatProject.uml#_npyasRq9EeGuC7KEJfOEoA"/>
+      <visualProperties xmi:id="_nwYx8Bq9EeGuC7KEJfOEoA" position="74.5,-40.0"/>
+      <visibility xmi:id="_np5IZxq9EeGuC7KEJfOEoA" label="+"/>
+      <cardinality xmi:id="_np5IaBq9EeGuC7KEJfOEoA" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_oXIo4Bq9EeGuC7KEJfOEoA" sourceAnchor="109.0,0.0" targetAnchor="218.0,37.0" source="_9sqRcBq8EeGuC7KEJfOEoA" target="_9sqRcBq8EeGuC7KEJfOEoA">
+    <modelElement href="SkatProject.uml#_oXBUIBq9EeGuC7KEJfOEoA"/>
+    <visualProperties xmi:id="_oXIo4Rq9EeGuC7KEJfOEoA"/>
+    <nameVisual xmi:id="_oXIo4hq9EeGuC7KEJfOEoA" text="">
+      <visualProperties xmi:id="_oiPFoBq9EeGuC7KEJfOEoA" position="-283.5,-7.5"/>
+    </nameVisual>
+    <bendpoints xmi:id="_Bid-UCzlEeGJzuCoC9GARg" sourceY="-171" targetX="-109" targetY="-208"/>
+    <bendpoints xmi:id="_Bid-USzlEeGJzuCoC9GARg" sourceX="299" sourceY="-171" targetX="190" targetY="-208"/>
+    <bendpoints xmi:id="_BielYCzlEeGJzuCoC9GARg" sourceX="299" sourceY="37" targetX="190"/>
+    <sourceRole xmi:id="_oXIo4xq9EeGuC7KEJfOEoA" name="rightNeighbor">
+      <modelElement href="SkatProject.uml#_oXBUIRq9EeGuC7KEJfOEoA"/>
+      <visualProperties xmi:id="_oiN3gBq9EeGuC7KEJfOEoA" position="-102.5,-133.0"/>
+      <visibility xmi:id="_oXIo5Bq9EeGuC7KEJfOEoA" label="+"/>
+      <cardinality xmi:id="_oXJP8Bq9EeGuC7KEJfOEoA" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_oXJP8Rq9EeGuC7KEJfOEoA" name="leftNeighbor" navigable="true">
+      <modelElement href="SkatProject.uml#_oXB7Mhq9EeGuC7KEJfOEoA"/>
+      <visualProperties xmi:id="_oiPFoRq9EeGuC7KEJfOEoA" position="92.0,-131.0"/>
+      <visibility xmi:id="_oXJP8hq9EeGuC7KEJfOEoA" label="+"/>
+      <cardinality xmi:id="_oXJP8xq9EeGuC7KEJfOEoA" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_4F1WYBq9EeGuC7KEJfOEoA" sourceAnchor="218.0,103.0" targetAnchor="109.0,99.0" source="_9EuHsBq8EeGuC7KEJfOEoA" target="_9sqRcBq8EeGuC7KEJfOEoA">
+    <modelElement href="SkatProject.uml#_4Fv20Bq9EeGuC7KEJfOEoA"/>
+    <visualProperties xmi:id="_4F1WYRq9EeGuC7KEJfOEoA"/>
+    <nameVisual xmi:id="_4F1WYhq9EeGuC7KEJfOEoA" text="">
+      <visualProperties xmi:id="_4Li80Bq9EeGuC7KEJfOEoA" position="-8.0,-85.5"/>
+    </nameVisual>
+    <bendpoints xmi:id="_Bia7ACzlEeGJzuCoC9GARg" sourceX="294" targetY="276"/>
+    <sourceRole xmi:id="_4F1WYxq9EeGuC7KEJfOEoA" name="game" navigable="true">
+      <modelElement href="SkatProject.uml#_4Fv20Rq9EeGuC7KEJfOEoA"/>
+      <visualProperties xmi:id="_4LhusBq9EeGuC7KEJfOEoA" position="5.0,-43.5"/>
+      <visibility xmi:id="_4F1WZBq9EeGuC7KEJfOEoA" label="+"/>
+      <cardinality xmi:id="_4F1WZRq9EeGuC7KEJfOEoA" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_4F1WZhq9EeGuC7KEJfOEoA" name="player" navigable="true">
+      <modelElement href="SkatProject.uml#_4FxE8Bq9EeGuC7KEJfOEoA"/>
+      <visualProperties xmi:id="_4Ljj4Bq9EeGuC7KEJfOEoA" position="12.5,5.5"/>
+      <visibility xmi:id="_4F19cBq9EeGuC7KEJfOEoA" label="+"/>
+      <cardinality xmi:id="_4F19cRq9EeGuC7KEJfOEoA" label="3" max="3" min="3"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="__dgukBq9EeGuC7KEJfOEoA" sourceAnchor="218.0,50.0" targetAnchor="0.0,14.0" source="_9sqRcBq8EeGuC7KEJfOEoA" target="_9S4qEBq9EeGuC7KEJfOEoA">
+    <modelElement href="SkatProject.uml#__dcdIBq9EeGuC7KEJfOEoA"/>
+    <visualProperties xmi:id="__dgukRq9EeGuC7KEJfOEoA"/>
+    <nameVisual xmi:id="__dgukhq9EeGuC7KEJfOEoA" text="">
+      <visualProperties xmi:id="__if8QBq9EeGuC7KEJfOEoA" position="48.0,-7.5"/>
+    </nameVisual>
+    <sourceRole xmi:id="__dgukxq9EeGuC7KEJfOEoA" name="player" navigable="true">
+      <modelElement href="SkatProject.uml#__ddEMBq9EeGuC7KEJfOEoA"/>
+      <visualProperties xmi:id="__ieuIBq9EeGuC7KEJfOEoA" position="195.0,-43.5"/>
+      <visibility xmi:id="__dgulBq9EeGuC7KEJfOEoA" label="+"/>
+      <cardinality xmi:id="__dgulRq9EeGuC7KEJfOEoA" label="2" max="2" min="2"/>
+    </sourceRole>
+    <targetRole xmi:id="__dhVoBq9EeGuC7KEJfOEoA" name="cardLikelihoodMap" navigable="true">
+      <modelElement href="SkatProject.uml#__ddEMxq9EeGuC7KEJfOEoA"/>
+      <visualProperties xmi:id="__if8QRq9EeGuC7KEJfOEoA" position="-137.0,8.5"/>
+      <visibility xmi:id="__dhVoRq9EeGuC7KEJfOEoA" label="+"/>
+      <cardinality xmi:id="__dhVohq9EeGuC7KEJfOEoA" label="2" max="2" min="2"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_yV8l8Bq-EeGuC7KEJfOEoA" sourceAnchor="0.0,103.0" targetAnchor="107.0,0.0" source="_9EuHsBq8EeGuC7KEJfOEoA" target="_RZqnkBq9EeGuC7KEJfOEoA">
+    <modelElement href="SkatProject.uml#_yV3tcBq-EeGuC7KEJfOEoA"/>
+    <visualProperties xmi:id="_yV8l8Rq-EeGuC7KEJfOEoA"/>
+    <nameVisual xmi:id="_yV8l8hq-EeGuC7KEJfOEoA" text="">
+      <visualProperties xmi:id="_ya0e4Bq-EeGuC7KEJfOEoA" position="132.5,-7.5"/>
+    </nameVisual>
+    <bendpoints xmi:id="_BibiECzlEeGJzuCoC9GARg" sourceX="-242" targetY="-376"/>
+    <sourceRole xmi:id="_yV8l8xq-EeGuC7KEJfOEoA" name="game">
+      <modelElement href="SkatProject.uml#_yV4UgBq-EeGuC7KEJfOEoA"/>
+      <visualProperties xmi:id="_yaz30Bq-EeGuC7KEJfOEoA" position="-56.0,8.5"/>
+      <visibility xmi:id="_yV8l9Bq-EeGuC7KEJfOEoA" label="+"/>
+      <cardinality xmi:id="_yV8l9Rq-EeGuC7KEJfOEoA" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_yV8l9hq-EeGuC7KEJfOEoA" name="currentTrick" navigable="true">
+      <modelElement href="SkatProject.uml#_yV47kBq-EeGuC7KEJfOEoA"/>
+      <visualProperties xmi:id="_ya1F8Bq-EeGuC7KEJfOEoA" position="5.0,-419.5"/>
+      <visibility xmi:id="_yV8l9xq-EeGuC7KEJfOEoA" label="+"/>
+      <cardinality xmi:id="_yV8l-Bq-EeGuC7KEJfOEoA" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_5koaMBq-EeGuC7KEJfOEoA" sourceAnchor="109.0,206.0" targetAnchor="29.0,0.0" source="_9EuHsBq8EeGuC7KEJfOEoA" target="_3jpZ4Bq-EeGuC7KEJfOEoA">
+    <modelElement href="SkatProject.uml#_5kkIwBq-EeGuC7KEJfOEoA"/>
+    <visualProperties xmi:id="_5koaMRq-EeGuC7KEJfOEoA"/>
+    <nameVisual xmi:id="_5koaMhq-EeGuC7KEJfOEoA" text="">
+      <visualProperties xmi:id="_5ouQABq-EeGuC7KEJfOEoA" position="-10.5,-12.5"/>
+    </nameVisual>
+    <sourceRole xmi:id="_5koaMxq-EeGuC7KEJfOEoA" name="game">
+      <modelElement href="SkatProject.uml#_5kkv0Bq-EeGuC7KEJfOEoA"/>
+      <visualProperties xmi:id="_5oto8Bq-EeGuC7KEJfOEoA" position="0.5,5.0"/>
+      <visibility xmi:id="_5koaNBq-EeGuC7KEJfOEoA" label="+"/>
+      <cardinality xmi:id="_5koaNRq-EeGuC7KEJfOEoA" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_5koaNhq-EeGuC7KEJfOEoA" name="trump" navigable="true">
+      <modelElement href="SkatProject.uml#_5kkv0xq-EeGuC7KEJfOEoA"/>
+      <visualProperties xmi:id="_5ou3EBq-EeGuC7KEJfOEoA" position="-65.5,-39.5"/>
+      <visibility xmi:id="_5koaNxq-EeGuC7KEJfOEoA" label="+"/>
+      <cardinality xmi:id="_5koaOBq-EeGuC7KEJfOEoA" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:GeneralizationVisual" xmi:id="_C-DnsBq_EeGuC7KEJfOEoA" sourceAnchor="29.0,0.0" targetAnchor="29.0,27.0" subClass="_8u9BIBq-EeGuC7KEJfOEoA" superClass="_3jpZ4Bq-EeGuC7KEJfOEoA">
+    <modelElement href="SkatProject.uml#_C-CZkBq_EeGuC7KEJfOEoA"/>
+    <visualProperties xmi:id="_C-DnsRq_EeGuC7KEJfOEoA"/>
+    <bendpoints xmi:id="_BiXQoSzlEeGJzuCoC9GARg" sourceY="-25" targetX="65" targetY="91"/>
+    <bendpoints xmi:id="_BiX3sCzlEeGJzuCoC9GARg" sourceX="-65" sourceY="-25" targetY="91"/>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:GeneralizationVisual" xmi:id="_DkWysBq_EeGuC7KEJfOEoA" sourceAnchor="20.0,0.0" targetAnchor="29.0,27.0" subClass="_Bx4IcBq_EeGuC7KEJfOEoA" superClass="_3jpZ4Bq-EeGuC7KEJfOEoA">
+    <modelElement href="SkatProject.uml#_DkU9gBq_EeGuC7KEJfOEoA"/>
+    <visualProperties xmi:id="_DkWysRq_EeGuC7KEJfOEoA"/>
+    <bendpoints xmi:id="_BiWpkCzlEeGJzuCoC9GARg" sourceY="-25" targetX="-143" targetY="91"/>
+    <bendpoints xmi:id="_BiXQoCzlEeGJzuCoC9GARg" sourceX="143" sourceY="-25" targetY="91"/>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:GeneralizationVisual" xmi:id="_ECtioBq_EeGuC7KEJfOEoA" sourceAnchor="35.0,0.0" targetAnchor="29.0,27.0" subClass="_9UNqUBq-EeGuC7KEJfOEoA" superClass="_3jpZ4Bq-EeGuC7KEJfOEoA">
+    <modelElement href="SkatProject.uml#_ECrtcBq_EeGuC7KEJfOEoA"/>
+    <visualProperties xmi:id="_ECtioRq_EeGuC7KEJfOEoA"/>
+    <bendpoints xmi:id="_BiOGsCzlEeGJzuCoC9GARg" sourceY="-25" targetX="-65" targetY="91"/>
+    <bendpoints xmi:id="_BiOGsSzlEeGJzuCoC9GARg" sourceX="65" sourceY="-25" targetY="91"/>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:GeneralizationVisual" xmi:id="_EmryYBq_EeGuC7KEJfOEoA" sourceAnchor="43.0,0.0" targetAnchor="29.0,27.0" subClass="_-ZP_wBq-EeGuC7KEJfOEoA" superClass="_3jpZ4Bq-EeGuC7KEJfOEoA">
+    <modelElement href="SkatProject.uml#_EmqkQBq_EeGuC7KEJfOEoA"/>
+    <visualProperties xmi:id="_EmryYRq_EeGuC7KEJfOEoA"/>
+    <bendpoints xmi:id="_BiX3sSzlEeGJzuCoC9GARg" sourceY="-25" targetX="169" targetY="91"/>
+    <bendpoints xmi:id="_BiYewCzlEeGJzuCoC9GARg" sourceX="-169" sourceY="-25" targetY="91"/>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_d_cwMBtpEeGcY9FcKSyF7g" sourceAnchor="120.0,0.0" targetAnchor="16.0,27.0" source="_RZqnkBq9EeGuC7KEJfOEoA" target="_3jpZ4Bq-EeGuC7KEJfOEoA">
+    <modelElement href="SkatProject.uml#_d_YewBtpEeGcY9FcKSyF7g"/>
+    <visualProperties xmi:id="_d_cwMRtpEeGcY9FcKSyF7g"/>
+    <nameVisual xmi:id="_d_cwMhtpEeGcY9FcKSyF7g" text="">
+      <visualProperties xmi:id="_eHR2gBtpEeGcY9FcKSyF7g" position="38.0,-7.5"/>
+    </nameVisual>
+    <bendpoints xmi:id="_BiYewSzlEeGJzuCoC9GARg" sourceY="-25" targetX="-325" targetY="26"/>
+    <bendpoints xmi:id="_BiZF0CzlEeGJzuCoC9GARg" sourceX="325" sourceY="-25" targetY="26"/>
+    <sourceRole xmi:id="_d_cwMxtpEeGcY9FcKSyF7g" name="trick">
+      <modelElement href="SkatProject.uml#_d_YewRtpEeGcY9FcKSyF7g"/>
+      <visualProperties xmi:id="_eHRPcBtpEeGcY9FcKSyF7g" position="5.0,-68.5"/>
+      <visibility xmi:id="_d_cwNBtpEeGcY9FcKSyF7g" label="+"/>
+      <cardinality xmi:id="_d_cwNRtpEeGcY9FcKSyF7g" label="*" max="-1"/>
+    </sourceRole>
+    <targetRole xmi:id="_d_cwNhtpEeGcY9FcKSyF7g" name="trump" navigable="true">
+      <modelElement href="SkatProject.uml#_d_ZF0RtpEeGcY9FcKSyF7g"/>
+      <visualProperties xmi:id="_eHR2gRtpEeGcY9FcKSyF7g" position="-58.0,34.5"/>
+      <visibility xmi:id="_d_cwNxtpEeGcY9FcKSyF7g" label="+"/>
+      <cardinality xmi:id="_d_cwOBtpEeGcY9FcKSyF7g" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:GeneralizationVisual" xmi:id="_QArJwCzkEeGJzuCoC9GARg" sourceAnchor="94.0,0.0" targetAnchor="122.0,137.0" subClass="_RZqnkBq9EeGuC7KEJfOEoA" superClass="_xrR4oCzjEeGJzuCoC9GARg">
+    <modelElement href="SkatProject.uml#_QApUkCzkEeGJzuCoC9GARg"/>
+    <visualProperties xmi:id="_QArJwSzkEeGJzuCoC9GARg"/>
+    <bendpoints xmi:id="_BiZs4CzlEeGJzuCoC9GARg" sourceY="-740" targetX="-364" targetY="36"/>
+    <bendpoints xmi:id="_BiZs4SzlEeGJzuCoC9GARg" sourceX="364" sourceY="-740" targetY="36"/>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:GeneralizationVisual" xmi:id="_VaqtQCzkEeGJzuCoC9GARg" sourceAnchor="26.0,0.0" targetAnchor="122.0,137.0" subClass="_SfQFACzkEeGJzuCoC9GARg" superClass="_xrR4oCzjEeGJzuCoC9GARg">
+    <modelElement href="SkatProject.uml#_VapfICzkEeGJzuCoC9GARg"/>
+    <visualProperties xmi:id="_VaqtQSzkEeGJzuCoC9GARg"/>
+    <bendpoints xmi:id="_BiaT8CzlEeGJzuCoC9GARg" sourceY="-25" targetX="104" targetY="36"/>
+    <bendpoints xmi:id="_BiaT8SzlEeGJzuCoC9GARg" sourceX="-104" sourceY="-25" targetY="36"/>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:GeneralizationVisual" xmi:id="_WFsnQCzkEeGJzuCoC9GARg" sourceAnchor="23.0,0.0" targetAnchor="122.0,137.0" subClass="_RN5x4CzkEeGJzuCoC9GARg" superClass="_xrR4oCzjEeGJzuCoC9GARg">
+    <modelElement href="SkatProject.uml#_WFrZICzkEeGJzuCoC9GARg"/>
+    <visualProperties xmi:id="_WFsnQSzkEeGJzuCoC9GARg"/>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_Xpn4ICzkEeGJzuCoC9GARg" sourceAnchor="109.0,0.0" targetAnchor="23.0,27.0" source="_9EuHsBq8EeGuC7KEJfOEoA" target="_RN5x4CzkEeGJzuCoC9GARg">
+    <modelElement href="SkatProject.uml#_XpjmsCzkEeGJzuCoC9GARg"/>
+    <visualProperties xmi:id="_Xpn4ISzkEeGJzuCoC9GARg"/>
+    <nameVisual xmi:id="_Xpn4IizkEeGJzuCoC9GARg" text="">
+      <visualProperties xmi:id="_Xxs2ECzkEeGJzuCoC9GARg" position="-10.5,-1.5"/>
+    </nameVisual>
+    <sourceRole xmi:id="_Xpn4IyzkEeGJzuCoC9GARg" name="game" navigable="true">
+      <modelElement href="SkatProject.uml#_XpkNwCzkEeGJzuCoC9GARg"/>
+      <visualProperties xmi:id="_XxsPACzkEeGJzuCoC9GARg" position="-51.5,-40.0"/>
+      <visibility xmi:id="_Xpn4JCzkEeGJzuCoC9GARg" label="+"/>
+      <cardinality xmi:id="_Xpn4JSzkEeGJzuCoC9GARg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_Xpn4JizkEeGJzuCoC9GARg" name="skat" navigable="true">
+      <modelElement href="SkatProject.uml#_Xpk00CzkEeGJzuCoC9GARg"/>
+      <visualProperties xmi:id="_Xxs2ESzkEeGJzuCoC9GARg" position="5.5,5.5"/>
+      <visibility xmi:id="_Xpn4JyzkEeGJzuCoC9GARg" label="+"/>
+      <cardinality xmi:id="_Xpn4KCzkEeGJzuCoC9GARg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_bGUogCzkEeGJzuCoC9GARg" sourceAnchor="0.0,50.0" targetAnchor="51.0,14.0" source="_9sqRcBq8EeGuC7KEJfOEoA" target="_SfQFACzkEeGJzuCoC9GARg">
+    <modelElement href="SkatProject.uml#_bGQXECzkEeGJzuCoC9GARg"/>
+    <visualProperties xmi:id="_bGUogSzkEeGJzuCoC9GARg"/>
+    <nameVisual xmi:id="_bGUogizkEeGJzuCoC9GARg" text="">
+      <visualProperties xmi:id="_bMilQCzkEeGJzuCoC9GARg" position="2.0,-7.5"/>
+    </nameVisual>
+    <sourceRole xmi:id="_bGUogyzkEeGJzuCoC9GARg" name="" navigable="true">
+      <modelElement href="SkatProject.uml#_bGQ-ICzkEeGJzuCoC9GARg"/>
+      <visualProperties xmi:id="_bMhXICzkEeGJzuCoC9GARg" position="-19.0,8.5"/>
+      <visibility xmi:id="_bGUohCzkEeGJzuCoC9GARg" label="+"/>
+      <cardinality xmi:id="_bGUohSzkEeGJzuCoC9GARg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_bGUohizkEeGJzuCoC9GARg" name="hand" navigable="true">
+      <modelElement href="SkatProject.uml#_bGRlMCzkEeGJzuCoC9GARg"/>
+      <visualProperties xmi:id="_bMilQSzkEeGJzuCoC9GARg" position="5.5,-43.50000000000003"/>
+      <visibility xmi:id="_bGUohyzkEeGJzuCoC9GARg" label="+"/>
+      <cardinality xmi:id="_bGUoiCzkEeGJzuCoC9GARg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_cA8dsCzkEeGJzuCoC9GARg" sourceAnchor="96.0,0.0" targetAnchor="244.0,69.0" source="_9sqRcBq8EeGuC7KEJfOEoA" target="_xrR4oCzjEeGJzuCoC9GARg">
+    <modelElement href="SkatProject.uml#_cA4MQCzkEeGJzuCoC9GARg"/>
+    <visualProperties xmi:id="_cA8dsSzkEeGJzuCoC9GARg"/>
+    <nameVisual xmi:id="_cA8dsizkEeGJzuCoC9GARg" text="">
+      <visualProperties xmi:id="_cInL8CzkEeGJzuCoC9GARg" position="-125.0,-7.500000000000028"/>
+    </nameVisual>
+    <bendpoints xmi:id="_BifMcCzlEeGJzuCoC9GARg" sourceY="-93" targetX="268"/>
+    <sourceRole xmi:id="_cA8dsyzkEeGJzuCoC9GARg" name="player" navigable="true">
+      <modelElement href="SkatProject.uml#_cA4MQSzkEeGJzuCoC9GARg"/>
+      <visualProperties xmi:id="_cImk4CzkEeGJzuCoC9GARg" position="-58.0,-84.49999999999999"/>
+      <visibility xmi:id="_cA8dtCzkEeGJzuCoC9GARg" label="+"/>
+      <cardinality xmi:id="_cA8dtSzkEeGJzuCoC9GARg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_cA8dtizkEeGJzuCoC9GARg" name="madeTricks" navigable="true">
+      <modelElement href="SkatProject.uml#_cA4zUizkEeGJzuCoC9GARg"/>
+      <visualProperties xmi:id="_cInL8SzkEeGJzuCoC9GARg" position="5.0,-43.5"/>
+      <visibility xmi:id="_cA8dtyzkEeGJzuCoC9GARg" label="+"/>
+      <cardinality xmi:id="_cA8duCzkEeGJzuCoC9GARg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_9UNqUBq-EeGuC7KEJfOEoA" name="Ramsch" generalizations="_ECtioBq_EeGuC7KEJfOEoA">
+    <modelElement href="SkatProject.uml#_9UNDQBq-EeGuC7KEJfOEoA"/>
+    <visualProperties xmi:id="_9UNqURq-EeGuC7KEJfOEoA" position="368.0,1017.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_9UNqUhq-EeGuC7KEJfOEoA" label="+"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_Bx4IcBq_EeGuC7KEJfOEoA" name="Null" generalizations="_DkWysBq_EeGuC7KEJfOEoA">
+    <modelElement href="SkatProject.uml#_Bx3hYBq_EeGuC7KEJfOEoA"/>
+    <visualProperties xmi:id="_Bx4IcRq_EeGuC7KEJfOEoA" position="305.0,1017.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_Bx4Ichq_EeGuC7KEJfOEoA" label="+"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_3jpZ4Bq-EeGuC7KEJfOEoA" name="Trump" abstractClass="true" associationsIn="_5koaMBq-EeGuC7KEJfOEoA _d_cwMBtpEeGcY9FcKSyF7g" subclassedBy="_C-DnsBq_EeGuC7KEJfOEoA _DkWysBq_EeGuC7KEJfOEoA _ECtioBq_EeGuC7KEJfOEoA _EmryYBq_EeGuC7KEJfOEoA">
+    <modelElement href="SkatProject.uml#_3joLwBq-EeGuC7KEJfOEoA"/>
+    <visualProperties xmi:id="_3jpZ4Rq-EeGuC7KEJfOEoA" position="439.0,874.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_3jpZ4hq-EeGuC7KEJfOEoA" label="+"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_8u9BIBq-EeGuC7KEJfOEoA" name="Grand" generalizations="_C-DnsBq_EeGuC7KEJfOEoA">
+    <modelElement href="SkatProject.uml#_8u8aEBq-EeGuC7KEJfOEoA"/>
+    <visualProperties xmi:id="_8u9BIRq-EeGuC7KEJfOEoA" position="504.0,1017.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_8u9BIhq-EeGuC7KEJfOEoA" label="+"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_-ZP_wBq-EeGuC7KEJfOEoA" name="TrumpSuit" generalizations="_EmryYBq_EeGuC7KEJfOEoA">
+    <modelElement href="SkatProject.uml#_-ZM8cBq-EeGuC7KEJfOEoA"/>
+    <visualProperties xmi:id="_-ZP_wRq-EeGuC7KEJfOEoA" position="594.0,1017.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_-ZP_whq-EeGuC7KEJfOEoA" label="+"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_9S4qEBq9EeGuC7KEJfOEoA" name="CardLikelihoodMap" associationsIn="__dgukBq9EeGuC7KEJfOEoA">
+    <modelElement href="SkatProject.uml#_9S4DABq9EeGuC7KEJfOEoA"/>
+    <visualProperties xmi:id="_9S4qERq9EeGuC7KEJfOEoA" position="1482.0,237.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_9S4qEhq9EeGuC7KEJfOEoA" label="+"/>
+    <attributes xmi:id="__dijwBq9EeGuC7KEJfOEoA" name="player">
+      <modelElement href="SkatProject.uml#__ddEMBq9EeGuC7KEJfOEoA"/>
+      <visibility xmi:id="__dijwRq9EeGuC7KEJfOEoA" label="+"/>
+      <cardinality xmi:id="__dijwhq9EeGuC7KEJfOEoA" label="2" max="2" min="2"/>
+      <type xmi:id="__dijwxq9EeGuC7KEJfOEoA" name="Player">
+        <modelElement href="SkatProject.uml#_9slY8Bq8EeGuC7KEJfOEoA"/>
+      </type>
+    </attributes>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_xrR4oCzjEeGJzuCoC9GARg" name="CardCollection" associationsIn="_cA8dsCzkEeGJzuCoC9GARg" subclassedBy="_QArJwCzkEeGJzuCoC9GARg _VaqtQCzkEeGJzuCoC9GARg _WFsnQCzkEeGJzuCoC9GARg">
+    <modelElement href="SkatProject.uml#_xrPcYCzjEeGJzuCoC9GARg"/>
+    <visualProperties xmi:id="_xrR4oSzjEeGJzuCoC9GARg" position="346.0,39.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_xrR4oizjEeGJzuCoC9GARg" label="+"/>
+    <attributes xmi:id="_GR7zkCzkEeGJzuCoC9GARg" name="contingPoints">
+      <modelElement href="SkatProject.uml#_GR6lcCzkEeGJzuCoC9GARg"/>
+      <visibility xmi:id="_GR7zkSzkEeGJzuCoC9GARg" label="+"/>
+      <cardinality xmi:id="_GR7zkizkEeGJzuCoC9GARg" label="1" max="1" min="1"/>
+      <type xmi:id="_GR7zkyzkEeGJzuCoC9GARg" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_cA9r0CzkEeGJzuCoC9GARg" name="player">
+      <modelElement href="SkatProject.uml#_cA4MQSzkEeGJzuCoC9GARg"/>
+      <visibility xmi:id="_cA9r0SzkEeGJzuCoC9GARg" label="+"/>
+      <cardinality xmi:id="_cA9r0izkEeGJzuCoC9GARg" label="1" max="1" min="1"/>
+      <type xmi:id="_cA9r0yzkEeGJzuCoC9GARg" name="Player">
+        <modelElement href="SkatProject.uml#_9slY8Bq8EeGuC7KEJfOEoA"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_165TsCzjEeGJzuCoC9GARg" name="addCard">
+      <modelElement href="SkatProject.uml#_164FkCzjEeGJzuCoC9GARg"/>
+      <visibility xmi:id="_165TsSzjEeGJzuCoC9GARg" label="+"/>
+      <parameters xmi:id="_165TsizjEeGJzuCoC9GARg" name="card">
+        <modelElement href="SkatProject.uml#_164soCzjEeGJzuCoC9GARg"/>
+        <type xmi:id="_165TsyzjEeGJzuCoC9GARg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_7-TAkCzjEeGJzuCoC9GARg" name="contains">
+      <modelElement href="SkatProject.uml#_7-RycCzjEeGJzuCoC9GARg"/>
+      <visibility xmi:id="_7-TAkSzjEeGJzuCoC9GARg" label="+"/>
+      <outParameters xmi:id="_7-TAkizjEeGJzuCoC9GARg">
+        <modelElement href="SkatProject.uml#_7-RycSzjEeGJzuCoC9GARg"/>
+        <type xmi:id="_7-TAkyzjEeGJzuCoC9GARg" name="boolean">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_7-TAlCzjEeGJzuCoC9GARg" name="card">
+        <modelElement href="SkatProject.uml#_7-RycizjEeGJzuCoC9GARg"/>
+        <type xmi:id="_7-TAlSzjEeGJzuCoC9GARg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_82yu0CzjEeGJzuCoC9GARg" name="remove">
+      <modelElement href="SkatProject.uml#_82xgsCzjEeGJzuCoC9GARg"/>
+      <visibility xmi:id="_82yu0SzjEeGJzuCoC9GARg" label="+"/>
+      <parameters xmi:id="_82yu0izjEeGJzuCoC9GARg" name="card">
+        <modelElement href="SkatProject.uml#_82xgsSzjEeGJzuCoC9GARg"/>
+        <type xmi:id="_82yu0yzjEeGJzuCoC9GARg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_MLKQwCzkEeGJzuCoC9GARg" name="size">
+      <modelElement href="SkatProject.uml#_MLJCoCzkEeGJzuCoC9GARg"/>
+      <visibility xmi:id="_MLKQwSzkEeGJzuCoC9GARg" label="+"/>
+      <outParameters xmi:id="_MLKQwizkEeGJzuCoC9GARg">
+        <modelElement href="SkatProject.uml#_MLJCoSzkEeGJzuCoC9GARg"/>
+        <type xmi:id="_MLKQwyzkEeGJzuCoC9GARg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </outParameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_RN5x4CzkEeGJzuCoC9GARg" name="Skat" associationsIn="_Xpn4ICzkEeGJzuCoC9GARg" generalizations="_WFsnQCzkEeGJzuCoC9GARg">
+    <modelElement href="SkatProject.uml#_RN5K0CzkEeGJzuCoC9GARg"/>
+    <visualProperties xmi:id="_RN5x4SzkEeGJzuCoC9GARg" position="445.0,250.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_RN6Y8CzkEeGJzuCoC9GARg" label="+"/>
+    <attributes xmi:id="_XppGQCzkEeGJzuCoC9GARg" name="game">
+      <modelElement href="SkatProject.uml#_XpkNwCzkEeGJzuCoC9GARg"/>
+      <visibility xmi:id="_XppGQSzkEeGJzuCoC9GARg" label="+"/>
+      <cardinality xmi:id="_XppGQizkEeGJzuCoC9GARg" label="1" max="1" min="1"/>
+      <type xmi:id="_XppGQyzkEeGJzuCoC9GARg" name="Game">
+        <modelElement href="SkatProject.uml#_9EihgBq8EeGuC7KEJfOEoA"/>
+      </type>
+    </attributes>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_SfQFACzkEeGJzuCoC9GARg" name="Hand" associationsIn="_bGUogCzkEeGJzuCoC9GARg" generalizations="_VaqtQCzkEeGJzuCoC9GARg">
+    <modelElement href="SkatProject.uml#_SfPd8CzkEeGJzuCoC9GARg"/>
+    <visualProperties xmi:id="_SfQFASzkEeGJzuCoC9GARg" position="545.0,237.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_SfQFAizkEeGJzuCoC9GARg" label="+"/>
+    <attributes xmi:id="_bGV2oCzkEeGJzuCoC9GARg" name="">
+      <modelElement href="SkatProject.uml#_bGQ-ICzkEeGJzuCoC9GARg"/>
+      <visibility xmi:id="_bGV2oSzkEeGJzuCoC9GARg" label="+"/>
+      <cardinality xmi:id="_bGV2oizkEeGJzuCoC9GARg" label="1" max="1" min="1"/>
+      <type xmi:id="_bGV2oyzkEeGJzuCoC9GARg" name="Player">
+        <modelElement href="SkatProject.uml#_9slY8Bq8EeGuC7KEJfOEoA"/>
+      </type>
+    </attributes>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_9EuHsBq8EeGuC7KEJfOEoA" name="Game" associationsOut="_4F1WYBq9EeGuC7KEJfOEoA _yV8l8Bq-EeGuC7KEJfOEoA _5koaMBq-EeGuC7KEJfOEoA _Xpn4ICzkEeGJzuCoC9GARg">
+    <modelElement href="SkatProject.uml#_9EihgBq8EeGuC7KEJfOEoA"/>
+    <visualProperties xmi:id="_9EuHsRq8EeGuC7KEJfOEoA" position="359.0,473.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_9EuHshq8EeGuC7KEJfOEoA" label="+"/>
+    <attributes xmi:id="_4F5AwBq9EeGuC7KEJfOEoA" name="player">
+      <modelElement href="SkatProject.uml#_4FxE8Bq9EeGuC7KEJfOEoA"/>
+      <visibility xmi:id="_4F5AwRq9EeGuC7KEJfOEoA" label="+"/>
+      <cardinality xmi:id="_4F5Awhq9EeGuC7KEJfOEoA" label="3" max="3" min="3"/>
+      <type xmi:id="_4F5Awxq9EeGuC7KEJfOEoA" name="Player">
+        <modelElement href="SkatProject.uml#_9slY8Bq8EeGuC7KEJfOEoA"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_yV90EBq-EeGuC7KEJfOEoA" name="currentTrick">
+      <modelElement href="SkatProject.uml#_yV47kBq-EeGuC7KEJfOEoA"/>
+      <visibility xmi:id="_yV90ERq-EeGuC7KEJfOEoA" label="+"/>
+      <cardinality xmi:id="_yV90Ehq-EeGuC7KEJfOEoA" label="1" max="1" min="1"/>
+      <type xmi:id="_yV90Exq-EeGuC7KEJfOEoA" name="Trick">
+        <modelElement href="SkatProject.uml#_RZpZcBq9EeGuC7KEJfOEoA"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_5kqPYBq-EeGuC7KEJfOEoA" name="trump">
+      <modelElement href="SkatProject.uml#_5kkv0xq-EeGuC7KEJfOEoA"/>
+      <visibility xmi:id="_5kqPYRq-EeGuC7KEJfOEoA" label="+"/>
+      <cardinality xmi:id="_5kqPYhq-EeGuC7KEJfOEoA" label="1" max="1" min="1"/>
+      <type xmi:id="_5kqPYxq-EeGuC7KEJfOEoA" name="Trump">
+        <modelElement href="SkatProject.uml#_3joLwBq-EeGuC7KEJfOEoA"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_XprigCzkEeGJzuCoC9GARg" name="skat">
+      <modelElement href="SkatProject.uml#_Xpk00CzkEeGJzuCoC9GARg"/>
+      <visibility xmi:id="_XprigSzkEeGJzuCoC9GARg" label="+"/>
+      <cardinality xmi:id="_XprigizkEeGJzuCoC9GARg" label="1" max="1" min="1"/>
+      <type xmi:id="_XprigyzkEeGJzuCoC9GARg" name="Skat">
+        <modelElement href="SkatProject.uml#_RN5K0CzkEeGJzuCoC9GARg"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_ON6LUBq_EeGuC7KEJfOEoA" name="getWinner">
+      <modelElement href="SkatProject.uml#_ON2g8Bq_EeGuC7KEJfOEoA"/>
+      <visibility xmi:id="_ON6LURq_EeGuC7KEJfOEoA" label="+"/>
+      <outParameters xmi:id="_ON6LUhq_EeGuC7KEJfOEoA">
+        <modelElement href="SkatProject.uml#_ON2g8Rq_EeGuC7KEJfOEoA"/>
+        <type xmi:id="_ON6LUxq_EeGuC7KEJfOEoA" name="Player">
+          <modelElement href="SkatProject.uml#_9slY8Bq8EeGuC7KEJfOEoA"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_ZIUk0BtLEeG6F6DGhXtrjQ" name="dealOut">
+      <modelElement href="SkatProject.uml#_ZIT9wBtLEeG6F6DGhXtrjQ"/>
+      <visibility xmi:id="_ZIUk0RtLEeG6F6DGhXtrjQ" label="+"/>
+    </operations>
+    <operations xmi:id="_Z3bGgBtLEeG6F6DGhXtrjQ" name="initialize">
+      <modelElement href="SkatProject.uml#_Z3Z4YBtLEeG6F6DGhXtrjQ"/>
+      <visibility xmi:id="_Z3bGgRtLEeG6F6DGhXtrjQ" label="+"/>
+    </operations>
+    <operations xmi:id="_u0bPcBtMEeG6F6DGhXtrjQ" name="getForehand">
+      <modelElement href="SkatProject.uml#_u0aBUBtMEeG6F6DGhXtrjQ"/>
+      <visibility xmi:id="_u0bPcRtMEeG6F6DGhXtrjQ" label="+"/>
+      <outParameters xmi:id="_u0bPchtMEeG6F6DGhXtrjQ">
+        <modelElement href="SkatProject.uml#_u0aBURtMEeG6F6DGhXtrjQ"/>
+        <type xmi:id="_u0bPcxtMEeG6F6DGhXtrjQ" name="Player">
+          <modelElement href="SkatProject.uml#_9slY8Bq8EeGuC7KEJfOEoA"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_2JMdkBtMEeG6F6DGhXtrjQ" name="getMiddlehand">
+      <modelElement href="SkatProject.uml#_2JLPcBtMEeG6F6DGhXtrjQ"/>
+      <visibility xmi:id="_2JMdkRtMEeG6F6DGhXtrjQ" label="+"/>
+      <outParameters xmi:id="_2JMdkhtMEeG6F6DGhXtrjQ">
+        <modelElement href="SkatProject.uml#_2JLPcRtMEeG6F6DGhXtrjQ"/>
+        <type xmi:id="_2JMdkxtMEeG6F6DGhXtrjQ" name="Player">
+          <modelElement href="SkatProject.uml#_9slY8Bq8EeGuC7KEJfOEoA"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_3hK9IBtMEeG6F6DGhXtrjQ" name="getRearhand">
+      <modelElement href="SkatProject.uml#_3hJvABtMEeG6F6DGhXtrjQ"/>
+      <visibility xmi:id="_3hK9IRtMEeG6F6DGhXtrjQ" label="+"/>
+      <outParameters xmi:id="_3hK9IhtMEeG6F6DGhXtrjQ">
+        <modelElement href="SkatProject.uml#_3hKWEBtMEeG6F6DGhXtrjQ"/>
+        <type xmi:id="_3hK9IxtMEeG6F6DGhXtrjQ" name="Player">
+          <modelElement href="SkatProject.uml#_9slY8Bq8EeGuC7KEJfOEoA"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_oT_ZICzjEeGJzuCoC9GARg" name="getComplexity">
+      <modelElement href="SkatProject.uml#_2AnWoCziEeGJzuCoC9GARg"/>
+      <visibility xmi:id="_oUJKIizjEeGJzuCoC9GARg" label="+"/>
+      <outParameters xmi:id="_oUJKICzjEeGJzuCoC9GARg">
+        <modelElement href="SkatProject.uml#_2AnWoSziEeGJzuCoC9GARg"/>
+        <type xmi:id="_oUJKISzjEeGJzuCoC9GARg" name="long">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_oT_ZISzjEeGJzuCoC9GARg" name="saveState">
+      <modelElement href="SkatProject.uml#_QyPmECzjEeGJzuCoC9GARg"/>
+      <visibility xmi:id="_oUJxMizjEeGJzuCoC9GARg" label="+"/>
+      <parameters xmi:id="_oUJxMCzjEeGJzuCoC9GARg" name="path">
+        <modelElement href="SkatProject.uml#_QyQNICzjEeGJzuCoC9GARg"/>
+        <type xmi:id="_oUJxMSzjEeGJzuCoC9GARg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_oT_ZIizjEeGJzuCoC9GARg" name="readState">
+      <modelElement href="SkatProject.uml#_SjZaoCzjEeGJzuCoC9GARg"/>
+      <visibility xmi:id="_oUKYQizjEeGJzuCoC9GARg" label="+"/>
+      <parameters xmi:id="_oUKYQCzjEeGJzuCoC9GARg" name="path">
+        <modelElement href="SkatProject.uml#_SjZaoSzjEeGJzuCoC9GARg"/>
+        <type xmi:id="_oUKYQSzjEeGJzuCoC9GARg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_RZqnkBq9EeGuC7KEJfOEoA" name="Trick" associationsIn="_yV8l8Bq-EeGuC7KEJfOEoA" associationsOut="_d_cwMBtpEeGcY9FcKSyF7g" generalizations="_QArJwCzkEeGJzuCoC9GARg">
+    <modelElement href="SkatProject.uml#_RZpZcBq9EeGuC7KEJfOEoA"/>
+    <visualProperties xmi:id="_RZqnkRq9EeGuC7KEJfOEoA" position="10.0,952.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_RZqnkhq9EeGuC7KEJfOEoA" label="+"/>
+    <attributes xmi:id="_d_dXQBtpEeGcY9FcKSyF7g" name="trump">
+      <modelElement href="SkatProject.uml#_d_ZF0RtpEeGcY9FcKSyF7g"/>
+      <visibility xmi:id="_d_dXQRtpEeGcY9FcKSyF7g" label="+"/>
+      <cardinality xmi:id="_d_dXQhtpEeGcY9FcKSyF7g" label="1" max="1" min="1"/>
+      <type xmi:id="_d_dXQxtpEeGcY9FcKSyF7g" name="Trump">
+        <modelElement href="SkatProject.uml#_3joLwBq-EeGuC7KEJfOEoA"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_PiuCIBq_EeGuC7KEJfOEoA" name="getWinner">
+      <modelElement href="SkatProject.uml#_PitbEBq_EeGuC7KEJfOEoA"/>
+      <visibility xmi:id="_PiupMBq_EeGuC7KEJfOEoA" label="+"/>
+      <outParameters xmi:id="_PiupMRq_EeGuC7KEJfOEoA">
+        <modelElement href="SkatProject.uml#_PitbERq_EeGuC7KEJfOEoA"/>
+        <type xmi:id="_PiupMhq_EeGuC7KEJfOEoA" name="Player">
+          <modelElement href="SkatProject.uml#_9slY8Bq8EeGuC7KEJfOEoA"/>
+        </type>
+      </outParameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_9sqRcBq8EeGuC7KEJfOEoA" name="Player" associationsIn="_np5IYBq9EeGuC7KEJfOEoA _oXIo4Bq9EeGuC7KEJfOEoA _4F1WYBq9EeGuC7KEJfOEoA" associationsOut="_np5IYBq9EeGuC7KEJfOEoA _oXIo4Bq9EeGuC7KEJfOEoA __dgukBq9EeGuC7KEJfOEoA _bGUogCzkEeGJzuCoC9GARg _cA8dsCzkEeGJzuCoC9GARg">
+    <modelElement href="SkatProject.uml#_9slY8Bq8EeGuC7KEJfOEoA"/>
+    <visualProperties xmi:id="_9sqRcRq8EeGuC7KEJfOEoA" position="761.0,201.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_9sqRchq8EeGuC7KEJfOEoA" label="+"/>
+    <attributes xmi:id="_np69kBq9EeGuC7KEJfOEoA" name="rightNeighbor">
+      <modelElement href="SkatProject.uml#_npyasRq9EeGuC7KEJfOEoA"/>
+      <visibility xmi:id="_np69kRq9EeGuC7KEJfOEoA" label="+"/>
+      <cardinality xmi:id="_np69khq9EeGuC7KEJfOEoA" label="1" max="1" min="1"/>
+      <type xmi:id="_np69kxq9EeGuC7KEJfOEoA" name="Player">
+        <modelElement href="SkatProject.uml#_9slY8Bq8EeGuC7KEJfOEoA"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_oXLFIBq9EeGuC7KEJfOEoA" name="leftNeighbor">
+      <modelElement href="SkatProject.uml#_oXB7Mhq9EeGuC7KEJfOEoA"/>
+      <visibility xmi:id="_oXLFIRq9EeGuC7KEJfOEoA" label="+"/>
+      <cardinality xmi:id="_oXLFIhq9EeGuC7KEJfOEoA" label="1" max="1" min="1"/>
+      <type xmi:id="_oXLFIxq9EeGuC7KEJfOEoA" name="Player">
+        <modelElement href="SkatProject.uml#_9slY8Bq8EeGuC7KEJfOEoA"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_4F3LkBq9EeGuC7KEJfOEoA" name="game">
+      <modelElement href="SkatProject.uml#_4Fv20Rq9EeGuC7KEJfOEoA"/>
+      <visibility xmi:id="_4F3LkRq9EeGuC7KEJfOEoA" label="+"/>
+      <cardinality xmi:id="_4F3Lkhq9EeGuC7KEJfOEoA" label="1" max="1" min="1"/>
+      <type xmi:id="_4F3Lkxq9EeGuC7KEJfOEoA" name="Game">
+        <modelElement href="SkatProject.uml#_9EihgBq8EeGuC7KEJfOEoA"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="__dlAABq9EeGuC7KEJfOEoA" name="cardLikelihoodMap">
+      <modelElement href="SkatProject.uml#__ddEMxq9EeGuC7KEJfOEoA"/>
+      <visibility xmi:id="__dlAARq9EeGuC7KEJfOEoA" label="+"/>
+      <cardinality xmi:id="__dlAAhq9EeGuC7KEJfOEoA" label="2" max="2" min="2"/>
+      <type xmi:id="__dlAAxq9EeGuC7KEJfOEoA" name="CardLikelihoodMap">
+        <modelElement href="SkatProject.uml#_9S4DABq9EeGuC7KEJfOEoA"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_U6KdYBq-EeGuC7KEJfOEoA" name="opposingPoints">
+      <modelElement href="SkatProject.uml#_U6JPQBq-EeGuC7KEJfOEoA"/>
+      <visibility xmi:id="_U6KdYRq-EeGuC7KEJfOEoA" label="+"/>
+      <cardinality xmi:id="_U6KdYhq-EeGuC7KEJfOEoA" label="1" max="1" min="1"/>
+      <type xmi:id="_U6KdYxq-EeGuC7KEJfOEoA" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_Vw6fMBq-EeGuC7KEJfOEoA" name="ownPoints">
+      <modelElement href="SkatProject.uml#_Vw4qABq-EeGuC7KEJfOEoA"/>
+      <visibility xmi:id="_Vw6fMRq-EeGuC7KEJfOEoA" label="+"/>
+      <cardinality xmi:id="_Vw6fMhq-EeGuC7KEJfOEoA" label="1" max="1" min="1"/>
+      <type xmi:id="_Vw6fMxq-EeGuC7KEJfOEoA" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_bGXEwCzkEeGJzuCoC9GARg" name="hand">
+      <modelElement href="SkatProject.uml#_bGRlMCzkEeGJzuCoC9GARg"/>
+      <visibility xmi:id="_bGXEwSzkEeGJzuCoC9GARg" label="+"/>
+      <cardinality xmi:id="_bGXEwizkEeGJzuCoC9GARg" label="1" max="1" min="1"/>
+      <type xmi:id="_bGXEwyzkEeGJzuCoC9GARg" name="Hand">
+        <modelElement href="SkatProject.uml#_SfPd8CzkEeGJzuCoC9GARg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_cA_hACzkEeGJzuCoC9GARg" name="madeTricks">
+      <modelElement href="SkatProject.uml#_cA4zUizkEeGJzuCoC9GARg"/>
+      <visibility xmi:id="_cA_hASzkEeGJzuCoC9GARg" label="+"/>
+      <cardinality xmi:id="_cA_hAizkEeGJzuCoC9GARg" label="1" max="1" min="1"/>
+      <type xmi:id="_cA_hAyzkEeGJzuCoC9GARg" name="CardCollection">
+        <modelElement href="SkatProject.uml#_xrPcYCzjEeGJzuCoC9GARg"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_UeEh0Bq_EeGuC7KEJfOEoA" name="getNextCard">
+      <modelElement href="SkatProject.uml#_UeDTsBq_EeGuC7KEJfOEoA"/>
+      <visibility xmi:id="_UeEh0Rq_EeGuC7KEJfOEoA" label="+"/>
+      <outParameters xmi:id="_UeEh0hq_EeGuC7KEJfOEoA">
+        <modelElement href="SkatProject.uml#_UeDTsRq_EeGuC7KEJfOEoA"/>
+      </outParameters>
+      <parameters xmi:id="_bdo8ABq_EeGuC7KEJfOEoA" name="trick">
+        <modelElement href="SkatProject.uml#_bdnt4Bq_EeGuC7KEJfOEoA"/>
+        <type xmi:id="_dvYVIBq_EeGuC7KEJfOEoA" name="Trick">
+          <modelElement href="SkatProject.uml#_RZpZcBq9EeGuC7KEJfOEoA"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+</com.yattasolutions.uml.diagrams.classifier:ClassDiagram>
