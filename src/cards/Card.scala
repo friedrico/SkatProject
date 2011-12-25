@@ -4,8 +4,12 @@
 package cards
 
 /**
+ * Card is a object which offers the opportunity to get the Cards, Suits and Ranks by better named constants.
+ * Therefore there are some kinds of constants are defined:
+ * 32 Cards named SuitRank which returns the Int which represents the Card.
+ * 4 Suits named SuitQuotient which returns the result of Card/8. So Diamonds_/8=DiamondsQuotient
+ * 8 Ranks named RankModulo which returns the result of Card%8. So _Seven%8=SevenModulo
  * @author Oliver Friedrich
- *
  */
 object Card {
 	val DiamondsSeven=0
