@@ -6,51 +6,12 @@ package cards
 /**
  * Card is a object which offers the opportunity to get the Cards, Suits and Ranks by better named constants.
  * Therefore there are some kinds of constants are defined:
- * 32 Cards named SuitRank which returns the Int which represents the Card.
- * 4 Suits named SuitQuotient which returns the result of Card/8. So Diamonds_/8=DiamondsQuotient
- * 8 Ranks named RankModulo which returns the result of Card%8. So _Seven%8=SevenModulo
+ * 32 Cards named SuitRank which returns the Long which represents the Card.
+ * 4 Suits named SuitQuotient which returns the result of log2(Card) / 8. So Diamonds_/8=DiamondsQuotient
+ * 8 Ranks named RankModulo which returns the result of log2(Card) % 8. So log2(_Seven) % 8 = SevenModulo
  * @author Oliver Friedrich
  */
 object Card {
-
-  /*
-	val DiamondsSeven=0
-	val DiamondsEight=1
-	val DiamondsNine=2
-	val DiamondsTen=4
-	val DiamondsJack=8
-	val DiamondsQueen=16
-	val DiamondsKing=32
-	val DiamondsAce=64
-	
-	val HeartsSeven=128
-	val HeartsEight=256
-	val HeartsNine=512
-	val HeartsTen=1024
-	val HeartsJack=2048
-	val HeartsQueen=4096
-	val HeartsKing=8192
-	val HeartsAce=16384
-	
-	val SpadesSeven=32768
-	val SpadesEight=65536
-	val SpadesNine=131072
-	val SpadesTen=262144
-	val SpadesJack=524288
-	val SpadesQueen=1048576
-	val SpadesKing=2097152
-	val SpadesAce=4194304
-	
-	val ClubsSeven=8388608
-	val ClubsEight=16777216
-	val ClubsNine=33554432
-	val ClubsTen=67108864
-	val ClubsJack=134217728
-	val ClubsQueen=268435456
-	val ClubsKing=536870912
-	val ClubsAce=1073741824
-	
-	*/
 
   val DiamondsSeven = 1L // 0
   val DiamondsEight = 2L
@@ -106,28 +67,43 @@ object Card {
    * returns the suit of a card.
    * Thats a value between 0 and 3.
    */
-  def getSuit(pCard:Long):Integer= {
-    var suit = 0
-    var card = pCard
-    while(card != 1) {
-      card = card >> 1
-      suit+=1
-    }
-    return (suit / 8);
+  def getSuit(pCard:Long):Long= {
+    return log2(pCard) / 8
   }
   /**
    * returns the rank of a card.
    * Thats a value between 0 and 7.
    */
-  def getRank(pCard:Long):Integer= {
-    var rank = 0
-    var card = pCard
-    while(card != 1) {
-      card = card >> 1
-      rank+=1
-    }
-    return (rank % 8);
+  def getRank(pCard:Long):Long= {
+    return log2(pCard) % 8
   }
+  
+  /**
+   * this function calculates the logarithm base 2.
+   * @param pNumber = The number, which satisfies the following condition: pNumber = 2^return
+   * @return = the number, which satisfies the following condition: return = log2(pNumber)
+   * this function is just for numbers with power of two, so pNumber can be 1,2,4,8,...
+   * the highest value of pNumber is 2147483648.
+   */
+  def log2(pNumber:Long):Long= {
+    var y = 0L
+    var lowerBound = 0
+    var upperBound = 31
+    
+    while (y != 1) {
+      y = pNumber >> (lowerBound + upperBound) / 2
+      if (y > 1) {
+        lowerBound = ((lowerBound + upperBound) / 2) + 1
+      }
+      if (y == 0) {
+        upperBound = ((lowerBound + upperBound) / 2) - 1
+      }
+    }
+    return ((lowerBound + upperBound) / 2)
+  }
+  
+  
+  
   
   
   
