@@ -13,41 +13,78 @@ package cards
  */
 object Card {
 
-  val DiamondsSeven = 1L // 0
-  val DiamondsEight = 2L
-  val DiamondsNine = 4L
-  val DiamondsTen = 8L
-  val DiamondsJack = 16L
-  val DiamondsQueen = 32L
-  val DiamondsKing = 64L
-  val DiamondsAce = 128L // 7
+//  val DiamondsSeven = 1L // 0
+//  val DiamondsEight = 2L
+//  val DiamondsNine = 4L
+//  val DiamondsTen = 8L
+//  val DiamondsJack = 16L
+//  val DiamondsQueen = 32L
+//  val DiamondsKing = 64L
+//  val DiamondsAce = 128L // 7
+//
+//  val HeartsSeven = 256L // 8
+//  val HeartsEight = 512L
+//  val HeartsNine = 1024L
+//  val HeartsTen = 2048L
+//  val HeartsJack = 4096L
+//  val HeartsQueen = 8192L
+//  val HeartsKing = 16384L
+//  val HeartsAce = 32768L // 15
+//
+//  val SpadesSeven = 65536L // 16
+//  val SpadesEight = 131072L
+//  val SpadesNine = 262144L
+//  val SpadesTen = 524288L
+//  val SpadesJack = 1048576L
+//  val SpadesQueen = 2097152L
+//  val SpadesKing = 4194304L
+//  val SpadesAce = 8388608L // 23
+//
+//  val ClubsSeven = 16777216L // 24
+//  val ClubsEight = 33554432L
+//  val ClubsNine = 67108864L
+//  val ClubsTen = 134217728L
+//  val ClubsJack = 268435456L
+//  val ClubsQueen = 536870912L
+//  val ClubsKing = 1073741824L
+//  val ClubsAce = 2147483648L // 31
+  
+  val DiamondsSeven = 0
+  val DiamondsEight = 1
+  val DiamondsNine = 2
+  val DiamondsTen = 3
+  val DiamondsJack = 4
+  val DiamondsQueen = 5
+  val DiamondsKing = 6
+  val DiamondsAce = 7
 
-  val HeartsSeven = 256L // 8
-  val HeartsEight = 512L
-  val HeartsNine = 1024L
-  val HeartsTen = 2048L
-  val HeartsJack = 4096L
-  val HeartsQueen = 8192L
-  val HeartsKing = 16384L
-  val HeartsAce = 32768L // 15
+  val HeartsSeven = 8
+  val HeartsEight = 9
+  val HeartsNine = 10
+  val HeartsTen = 11
+  val HeartsJack = 12
+  val HeartsQueen = 13
+  val HeartsKing = 14
+  val HeartsAce = 15
 
-  val SpadesSeven = 65536L // 16
-  val SpadesEight = 131072L
-  val SpadesNine = 262144L
-  val SpadesTen = 524288L
-  val SpadesJack = 1048576L
-  val SpadesQueen = 2097152L
-  val SpadesKing = 4194304L
-  val SpadesAce = 8388608L // 23
+  val SpadesSeven = 16
+  val SpadesEight = 17
+  val SpadesNine = 18
+  val SpadesTen = 19
+  val SpadesJack = 20
+  val SpadesQueen = 21
+  val SpadesKing = 22
+  val SpadesAce = 23
 
-  val ClubsSeven = 16777216L // 24
-  val ClubsEight = 33554432L
-  val ClubsNine = 67108864L
-  val ClubsTen = 134217728L
-  val ClubsJack = 268435456L
-  val ClubsQueen = 536870912L
-  val ClubsKing = 1073741824L
-  val ClubsAce = 2147483648L // 31
+  val ClubsSeven = 24
+  val ClubsEight = 25
+  val ClubsNine = 26
+  val ClubsTen = 27
+  val ClubsJack = 28
+  val ClubsQueen = 29
+  val ClubsKing = 30
+  val ClubsAce = 31
+  
 
   val DiamondsQuotient = 0
   val HeartsQuotient = 1
@@ -67,15 +104,17 @@ object Card {
    * returns the suit of a card.
    * Thats a value between 0 and 3.
    */
-  def getSuit(pCard:Long):Long= {
-    return log2(pCard) / 8
+  def getSuit(pCard:Int):Int= {
+    //return log2(pCard) / 8
+    return pCard / 8
   }
   /**
    * returns the rank of a card.
    * Thats a value between 0 and 7.
    */
-  def getRank(pCard:Long):Long= {
-    return log2(pCard) % 8
+  def getRank(pCard:Int):Int= {
+    //return log2(pCard) % 8
+    return pCard % 8
   }
   
   /**
