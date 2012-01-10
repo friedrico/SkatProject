@@ -49,62 +49,62 @@ object Card {
 //  val ClubsKing = 1073741824L
 //  val ClubsAce = 2147483648L // 31
   
-  val DiamondsSeven = 0
-  val DiamondsEight = 1
-  val DiamondsNine = 2
-  val DiamondsTen = 3
-  val DiamondsJack = 4
-  val DiamondsQueen = 5
-  val DiamondsKing = 6
-  val DiamondsAce = 7
+  val DiamondsSeven = 0L
+  val DiamondsEight = 1L
+  val DiamondsNine = 2L
+  val DiamondsTen = 3L
+  val DiamondsJack = 4L
+  val DiamondsQueen = 5L
+  val DiamondsKing = 6L
+  val DiamondsAce = 7L
 
-  val HeartsSeven = 8
-  val HeartsEight = 9
-  val HeartsNine = 10
-  val HeartsTen = 11
-  val HeartsJack = 12
-  val HeartsQueen = 13
-  val HeartsKing = 14
-  val HeartsAce = 15
+  val HeartsSeven = 8L
+  val HeartsEight = 9L
+  val HeartsNine = 10L
+  val HeartsTen = 11L
+  val HeartsJack = 12L
+  val HeartsQueen = 13L
+  val HeartsKing = 14L
+  val HeartsAce = 15L
 
-  val SpadesSeven = 16
-  val SpadesEight = 17
-  val SpadesNine = 18
-  val SpadesTen = 19
-  val SpadesJack = 20
-  val SpadesQueen = 21
-  val SpadesKing = 22
-  val SpadesAce = 23
+  val SpadesSeven = 16L
+  val SpadesEight = 17L
+  val SpadesNine = 18L
+  val SpadesTen = 19L
+  val SpadesJack = 20L
+  val SpadesQueen = 21L
+  val SpadesKing = 22L
+  val SpadesAce = 23L
 
-  val ClubsSeven = 24
-  val ClubsEight = 25
-  val ClubsNine = 26
-  val ClubsTen = 27
-  val ClubsJack = 28
-  val ClubsQueen = 29
-  val ClubsKing = 30
-  val ClubsAce = 31
+  val ClubsSeven = 24L
+  val ClubsEight = 25L
+  val ClubsNine = 26L
+  val ClubsTen = 27L
+  val ClubsJack = 28L
+  val ClubsQueen = 29L
+  val ClubsKing = 30L
+  val ClubsAce = 31L
   
 
-  val DiamondsQuotient = 0
-  val HeartsQuotient = 1
-  val SpadesQuotient = 2
-  val ClubsQuotient = 3
+  val DiamondsQuotient = 0L
+  val HeartsQuotient = 1L
+  val SpadesQuotient = 2L
+  val ClubsQuotient = 3L
 
-  val SevenModulo = 0
-  val EightModulo = 1
-  val NineModulo = 2
-  val TenModulo = 3
-  val JackModulo = 4
-  val QueenModulo = 5
-  val KingModulo = 6
-  val AceModulo = 7
+  val SevenModulo = 0L
+  val EightModulo = 1L
+  val NineModulo = 2L
+  val TenModulo = 3L
+  val JackModulo = 4L
+  val QueenModulo = 5L
+  val KingModulo = 6L
+  val AceModulo = 7L
   
   /**
    * returns the suit of a card.
    * Thats a value between 0 and 3.
    */
-  def getSuit(pCard:Int):Int= {
+  def getSuit(pCard:Long):Long= {
     //return log2(pCard) / 8
     return pCard / 8
   }
@@ -112,7 +112,7 @@ object Card {
    * returns the rank of a card.
    * Thats a value between 0 and 7.
    */
-  def getRank(pCard:Int):Int= {
+  def getRank(pCard:Long):Long= {
     //return log2(pCard) % 8
     return pCard % 8
   }
