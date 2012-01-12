@@ -12,39 +12,28 @@ class CardCollection {
    * The vector is the representation of the Cards. The 32 bits stand for 32 Cards and are set to 1 when the Collections contains the nth Card.
    * Initially the vector is 0 so no card is in the Collection
    */
-  private var vector: Int = 0
+  private var vector: Long = 0
   /**
    * Adds a (or more) Card(s) to the Collection. If you want to add more than one Card with one call you have to OR all the Cards which shall be added.
-   * @param pCard the bit vector representation of the Card(s) to add - 32 bits as Int
+   * @param pCard the bit vector representation of the Card(s) to add - 32 bits as Long
    */
-  def add(pCard: Int) = {
+  def add(pCard: Long) = {
     vector |= 1 << pCard
-    // vector |= pCard
   }
   /**
    * Removes a (or more) Card(s) from the Collection. If you want to remove more than one Card with one call you have to OR all the Cards which shall be removed.
-   * @param pCard the bit vector representation of the Card(s) to remove - 32 bits as Int
+   * @param pCard the bit vector representation of the Card(s) to remove - 32 bits as Long
    */
-  def remove(pCard: Int) = {
-    // this method will add a card to the vector if the card is not containing.
-    vector ^= 1 << pCard
-    /*
-     * my suggestion is follow:
-     * vector &= ~pCard
-     * this method will just remove the not containing cards.
-     * if a card in pCard is not a part of the vector, nothing will happen to this one.
-     * furthermore i think that this method is faster then:
-     * if(contains(pCard)) remove(pCard)...but i dont know...we will see
-     */
+  def remove(pCard: Long) = {
+    vector &= 1 << ~pCard
   }
   /**
    * Tests if the given Card(s) is/are part of the Collection. If you want to test whether more than one Card are in the Collection with one call you have to OR all the Cards which shall be tested.
-   * @param pCard the bit vector representation of the Card(s) to test - 32 bits as Int
+   * @param pCard the bit vector representation of the Card(s) to test - 32 bits as Long
    * @return true if and only if the given Card(s) is/are in the Collection
    */
-  def contains(pCard: Int): Boolean = {
+  def contains(pCard: Long): Boolean = {
     (vector & 1 << pCard) != 0
-    // return ((vector & pCard) != 0)
   }
   /**
    * Gives the number of Cards in the Collection.
