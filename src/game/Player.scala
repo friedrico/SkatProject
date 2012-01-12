@@ -11,11 +11,7 @@ import cards.CardCollection
  * @author Oliver Friedrich
  *
  */
-class Player(pLeftNeighbor:Player,pRightNeighbor:Player,pHand:Hand,pGame:Game) {
-	/**
-	 * 
-	 */
-	val game=pGame
+class Player(pLeftNeighbor:Player,pRightNeighbor:Player,pHand:Hand) {
 	/**
 	 * 
 	 */
@@ -59,8 +55,8 @@ class Player(pLeftNeighbor:Player,pRightNeighbor:Player,pHand:Hand,pGame:Game) {
 	  0
 	}
 	
-	def this()=this(null,null,null,null)
-	def this(pRightNeighbor:Player)=this(null,pRightNeighbor,null,null)
-	def this(pLeftNeighbor:Player,pRightNeighbor:Player)=this(pLeftNeighbor,pRightNeighbor,null,null)
+	def this()=this(null,null,new Hand)
+	def this(pRightNeighbor:Player)=this(null,pRightNeighbor,new Hand)
+	def this(pLeftNeighbor:Player,pRightNeighbor:Player)=this(pLeftNeighbor,pRightNeighbor,new Hand)
 
 }
