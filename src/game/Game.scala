@@ -77,6 +77,12 @@ class Game {
 						<skat>
 						</skat>
 					</currentRound>
+
+					<initialDistribution>
+					</initialDistribution>
+					<tricks>
+						<trick></trick>
+					</tricks>
 				</game>
 				XML.save(pPath,saveXml)
 	}
