@@ -5,8 +5,9 @@ package game
 import cards.Skat
 import cards.Trick
 import cards.Trump
-import cards.Ramsch
+import cards._
 import scala.xml.XML
+import cards.Hand
 
 /**
  * @author Oliver Friedrich
@@ -16,23 +17,26 @@ class Game {
 	/**
 	 * The Player who plays the first Card.
 	 */
-	val players=List(new Player(0),new Player(2), new Player(1))
+	var players=List(new Player(0),new Player(2))
+	players++=new Player(1)::players
+	//(0,2,1,0,2)
 
 	/**
 	 * The two Cards which lent the name to the Game.
 	 */
-	val skat=new Skat
+	var skat:(Long,Long)=(0L,0L)
 	
 	/**
 	 * The Trick which represents the current Cards on the table and where every Player has to play his Cards
 	 */
-	val currentTrick=new Trick()
+	var currentTrick:(Long,Long,Long)=(0L,0L,0L)
 		
 	/**
 	 * The current Trump of the Game.
 	 */
-	val trump=getTrump
+	var trump:Trump=getTrump
 
+	val tricks=List[(Int,Int,Int)]()
 	initialize
 
 	/**
@@ -42,47 +46,35 @@ class Game {
 	def saveState(pPath:String)={
 		val saveXml = 
 				<game>
-					<player1>
-					<hand>
-					</hand>
-					<madeTricks>
-						<trick>
-						</trick>
-					</madeTricks>
-					<points>
-						<own>
-							{}
-						</own>
-						<opposing>
-						</opposing>
-					</points>
-					<opposition>
-						<left>
-						</left>
-						<right>
-						</right>
-					</opposition>
-					</player1>
-					<player2>
-					</player2>
-					<player3>
-					</player3>
 					<currentRound>
-						<player>
-						</player>
 						<trump>
+							{trump}
 						</trump>
 						<trick>
+							{currentTrick._1},
+							{currentTrick._2},
+							{currentTrick._3}	
 						</trick>
 						<skat>
+							{skat._1}
+							{skat._2}
 						</skat>
 					</currentRound>
 
 					<initialDistribution>
+					{
+						players(0).toXML
+						players(1).toXML
+						players(2).toXML
+					}
 					</initialDistribution>
 					<tricks>
-						<trick></trick>
+					{
+					  for(trick<-tricks){<trick>{trick._1},{trick._2},{trick._3}</trick>}
+					}
 					</tricks>
+					<serializedTree>
+					</serializedTree>
 				</game>
 				XML.save(pPath,saveXml)
 	}
@@ -92,6 +84,22 @@ class Game {
 	 */
 	def readState(pPath:String)={
 		val readXml=XML.load(pPath)
+		
+		skat=((readXml\"skat").text.split(",")(0).toLong,(readXml\"skat").text.split(",")(1).toLong)
+		
+		currentTrick=((readXml\"trick").text.split(",")(0).toLong,
+		    (readXml\"trick").text.split(",")(1).toLong,
+		    (readXml\"trick").text.split(",")(2).toLong)
+		    
+		trump=(readXml\"trump").text match{
+		  case "Hearts"=>Hearts()
+		  case "Spades"=>Spades()
+		  case "Ramsch"=>Ramsch()
+		  case "Clubs"=>Clubs()
+		  case "Null"=>Null()
+		  case "Grand"=>Grand()
+		  case "Diamonds"=>Diamonds()
+		}
 	}
 	/**
 	 * Deals the Cards. Will create a Skat and give 10 Cards to every Player
@@ -119,7 +127,7 @@ class Game {
 	    players(0).handCards.add(3011576193L)
 	    players(1).handCards.add(1142575622L)
 	    players(2).handCards.add(140781688L)
-	    skat.add(33792L)
+	    skat=(10L,15L)
 	}
 	/**
 	 * Returns the number of steps needed to calculate the 

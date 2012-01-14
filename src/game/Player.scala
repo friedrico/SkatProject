@@ -43,6 +43,20 @@ class Player(pFriendIndex:Int,pHand:Hand) {
 	def getNextCard(pTrick:Trick):Int={
 	  0
 	}
-	
+	def toXML{
+	<player>
+		<hand>
+			{handCards}
+		</hand>
+		<points>
+			<own>
+				{ownPoints}
+			</own>
+			<opposing>
+				{opposingPoints}
+			</opposing>
+		</points>
+	</player>
+	}
 	def this(pFriendIndex:Int)=this(pFriendIndex,new Hand)
 }
