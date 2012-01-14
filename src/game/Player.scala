@@ -11,7 +11,7 @@ import cards.CardCollection
  * @author Oliver Friedrich
  *
  */
-class Player(pLeftNeighbor:Player,pRightNeighbor:Player,pHand:Hand) {
+class Player(pFriendIndex:Int,pHand:Hand) {
 	/**
 	 * 
 	 */
@@ -27,26 +27,15 @@ class Player(pLeftNeighbor:Player,pRightNeighbor:Player,pHand:Hand) {
 	/**
 	 * 
 	 */
-	val madeTricks=new CardCollection
-	
-	/**
-	 * 
-	 */
-	var rightNeighbor=pRightNeighbor
-	/**
-	 * 
-	 */
-	var leftNeighbor=pLeftNeighbor
-
-	/**
-	 * 
-	 */
 	var ownPoints=0
 	/**
 	 * 
 	 */
 	var opposingPoints=0
-	
+	/**
+	 * 
+	 */
+	val friendIndex=pFriendIndex
 	/**
 	 * @param pTrick
 	 * @return
@@ -55,8 +44,5 @@ class Player(pLeftNeighbor:Player,pRightNeighbor:Player,pHand:Hand) {
 	  0
 	}
 	
-	def this()=this(null,null,new Hand)
-	def this(pRightNeighbor:Player)=this(null,pRightNeighbor,new Hand)
-	def this(pLeftNeighbor:Player,pRightNeighbor:Player)=this(pLeftNeighbor,pRightNeighbor,new Hand)
-
+	def this(pFriendIndex:Int)=this(pFriendIndex,new Hand)
 }

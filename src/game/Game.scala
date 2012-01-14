@@ -13,28 +13,21 @@ import scala.xml.XML
  *
  */
 class Game {
-
 	/**
 	 * The Player who plays the first Card.
 	 */
-	val forehand=new Player
-	/**
-	 * The Player who plays the second Card.
-	 */
-	val middlehand=new Player(forehand)
-	/**
-	 * The Player who plays the third Card.
-	 */
-	val rearhand=new Player(forehand,middlehand)
+	val players=List(new Player(0),new Player(2), new Player(1))
 
 	/**
 	 * The two Cards which lent the name to the Game.
 	 */
 	val skat=new Skat
+	
 	/**
 	 * The Trick which represents the current Cards on the table and where every Player has to play his Cards
 	 */
-	val currentTrick=new Trick(forehand,middlehand,rearhand)
+	val currentTrick=new Trick()
+		
 	/**
 	 * The current Trump of the Game.
 	 */
@@ -117,11 +110,10 @@ class Game {
 //	    -------------------------------
 //	    +		   		     = 4294967295	= 2^32 - 1 => correct
 
-	    forehand.handCards.add(3011576193L)
-	    middlehand.handCards.add(1142575622L)
-	    rearhand.handCards.add(140781688L)
+	    players(0).handCards.add(3011576193L)
+	    players(1).handCards.add(1142575622L)
+	    players(2).handCards.add(140781688L)
 	    skat.add(33792L)
-	    
 	}
 	/**
 	 * Returns the number of steps needed to calculate the 
@@ -134,9 +126,6 @@ class Game {
 	 * Sets the neighbors of the Players correctly and deals the Cards.
 	 */
 	def initialize={
-			forehand.leftNeighbor=middlehand
-			forehand.rightNeighbor=rearhand
-			middlehand.leftNeighbor=rearhand
 			dealOut
 	}
 	/**
