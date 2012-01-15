@@ -149,4 +149,10 @@ class Game {
 	def getTrump():Trump={
 			Ramsch()
 	}
+	
+	def trumpToOtherPlayers(pPlayer:Player, pTrump:Trump) = {
+	  pPlayer.giveTrumpToHand(pTrump)
+	}
+	
+	
 }

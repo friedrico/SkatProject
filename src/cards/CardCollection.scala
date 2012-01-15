@@ -8,6 +8,9 @@ package cards
  * @author Oliver Friedrich
  */
 class CardCollection {
+  
+  var trumpMask = 0L
+  
   /**
    * The vector is the representation of the Cards. The 32 bits stand for 32 Cards and are set to 1 when the Collections contains the nth Card.
    * Initially the vector is 0 so no card is in the Collection
@@ -35,6 +38,11 @@ class CardCollection {
   def contains(pCard: Long): Boolean = {
     (vector & 1 << pCard) != 0
   }
+  
+  def setTrumpMask(pTrump:Trump) = {
+    trumpMask = pTrump.getMask
+  }
+  
   /**
    * Gives the number of Cards in the Collection.
    * @return the number of Cards in the Collection

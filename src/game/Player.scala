@@ -6,6 +6,7 @@ import cards.Hand
 import cards.CardLikelihoodMap
 import cards.Trick
 import cards.CardCollection
+import cards.Trump
 
 /**
  * @author Oliver Friedrich
@@ -43,6 +44,13 @@ class Player(pFriendIndex:Int,pHand:Hand) {
 	def getNextCard(pTrick:Trick):Int={
 	  0
 	}
+	
+	
+	def giveTrumpToHand(pTrump:Trump) = {
+	  handCards.setTrumpMask(pTrump)
+	}
+	
+	
 	def toXML{
 	<player>
 		<hand>
