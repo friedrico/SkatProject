@@ -4,7 +4,6 @@
 package game
 import cards.Hand
 import cards.CardLikelihoodMap
-import cards.Trick
 import cards.CardCollection
 import cards.Trump
 
@@ -41,17 +40,12 @@ class Player(pFriendIndex:Int,pHand:Hand) {
 	 * @param pTrick
 	 * @return
 	 */
-	def getNextCard(pTrick:Trick):Int={
+	def getNextCard(pTrick:(Long,Long,Long)):Int={
 	  0
 	}
+
 	
-	
-	def giveTrumpToHand(pTrump:Trump) = {
-	  handCards.setTrumpMask(pTrump)
-	}
-	
-	
-	def toXML{
+	def toXML={
 	<player>
 		<hand>
 			{handCards}

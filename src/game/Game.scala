@@ -3,11 +3,11 @@
  */
 package game
 import cards.Skat
-import cards.Trick
 import cards.Trump
 import cards._
 import scala.xml.XML
 import cards.Hand
+import scala.xml.Elem
 
 /**
  * @author Oliver Friedrich
@@ -42,7 +42,7 @@ class Game {
 	 * Writes the current environment (which means the current state of the game) to the given file. It creates a XML file which represents the current state of the Game. So which Player has which Cards and who has to play the next Card. The syntax of the XML file is really easy. It shall describe the game readable and does not save it the most efficient way.
 	 * @param pPath the path where to create the XML file
 	 */
-	def saveState(pPath:String)={
+	def saveState(pPath:String):Elem={
 		val saveXml = 
 				<game>
 					<currentRound>
@@ -76,6 +76,7 @@ class Game {
 					</serializedTree>
 				</game>
 				XML.save(pPath,saveXml)
+				saveXml
 	}
 	/**
 	 * Reads an environment (which means the current state of the game) from the given file. It is the complement of saveState and so saveState(x);loadState(x) will not change anything.
@@ -162,7 +163,7 @@ class Game {
 	}
 	
 	def trumpToOtherPlayers(pPlayer:Player, pTrump:Trump) = {
-	  pPlayer.giveTrumpToHand(pTrump)
+	  pPlayer.handCards.setTrumpMask(pTrump)
 	}
 	
 	
