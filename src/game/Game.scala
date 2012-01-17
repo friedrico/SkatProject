@@ -15,29 +15,28 @@ import cards.Hand
  */
 class Game {
 	/**
-	 * The Player who plays the first Card.
+	 * A list of players. the players are listed in follow way:
+	 * player0, player1, player2, player0, player1 
 	 */
-	var players=List(new Player(0),new Player(2))
-	players++=new Player(1)::players
-	//(0,2,1,0,2)
-
+	var players=List(new Player(),new Player())
+	players++=new Player()::players
 	/**
 	 * The two Cards which lent the name to the Game.
 	 */
 	var skat:(Long,Long)=(0L,0L)
-	
+	// deal out the cards to the skat and to the players.
+	initialize
 	/**
 	 * The Trick which represents the current Cards on the table and where every Player has to play his Cards
 	 */
 	var currentTrick:(Long,Long,Long)=(0L,0L,0L)
-		
 	/**
 	 * The current Trump of the Game.
 	 */
-	var trump:Trump=getTrump
+	var trump:Trump = Ramsch()
 
 	val tricks=List[(Int,Int,Int)]()
-	initialize
+	
 
 	/**
 	 * Writes the current environment (which means the current state of the game) to the given file. It creates a XML file which represents the current state of the Game. So which Player has which Cards and who has to play the next Card. The syntax of the XML file is really easy. It shall describe the game readable and does not save it the most efficient way.
@@ -141,13 +140,25 @@ class Game {
 	 */
 	def initialize={
 			dealOut
+			// bid
+			
 	}
 	/**
 	 * Gives the current Trump.
 	 * @return the Trump which was chosen by the winner of the betting phase
 	 */
 	def getTrump():Trump={
-			Ramsch()
+	  // bid
+	  return Diamonds()
+	}
+	/**
+	 * the players bids for the game.
+	 * after the winner is calculated, the friendIndices of the players are set.
+	 * @return the index of the player, which won the auction. This is 0,1 or 2.
+	 */
+	def auction():Integer = {
+	  // TODO: calculate + set friendIndices
+	  return 0
 	}
 	
 	def trumpToOtherPlayers(pPlayer:Player, pTrump:Trump) = {

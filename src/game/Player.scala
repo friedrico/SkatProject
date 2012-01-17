@@ -67,4 +67,5 @@ class Player(pFriendIndex:Int,pHand:Hand) {
 	</player>
 	}
 	def this(pFriendIndex:Int)=this(pFriendIndex,new Hand)
+	def this() = this(0, new Hand)
 }
