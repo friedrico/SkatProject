@@ -21,6 +21,8 @@ case class Diamonds extends Trump {
     // 00010000000100000001000000010000 = 269488144L = Jacks
     return 269488399L
   }
+  override def toString="Diamonds"
+
 }
 /**
  * @author Oliver Friedrich
@@ -32,6 +34,7 @@ case class Hearts extends Trump {
     // 00010000000100000001000000010000 = 269488144L = Jacks
     return 269553424L
   }
+  override def toString="Hearts"
 }
 /**
  * @author Oliver Friedrich
@@ -43,6 +46,7 @@ case class Spades extends Trump {
     // 00010000000100000001000000010000 = 269488144L = Jacks
     return 286199824L
   }
+  override def toString="Spades"
 }
 /**
  * @author Oliver Friedrich
@@ -55,6 +59,7 @@ case class Clubs extends Trump {
     
     return 4547678224L
   }
+  override def toString="Clubs"
 }
 /**
  * @author Oliver Friedrich
@@ -64,6 +69,7 @@ case class Null extends Trump {
   def getMask():Long={
     return 0L
   }
+  override def toString="Null"
 }
 /**
  * @author Oliver Friedrich
@@ -74,6 +80,7 @@ case class Grand extends Trump {
     // 00010000000100000001000000010000 = 269488144L = Jacks 
     return 269488144L
   }
+  override def toString="Grand"
 }
 /**
  * @author Oliver Friedrich
@@ -84,4 +91,5 @@ case class Ramsch extends Trump {
     // 00010000000100000001000000010000 = 269488144L = Jacks
     return 269488144L
   }
+  override def toString="Ramsch"
 }

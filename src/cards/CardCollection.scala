@@ -7,7 +7,7 @@ package cards
  * A CardCollection contains between 0 and 32 Cards.
  * @author Oliver Friedrich
  */
-class CardCollection {
+class CardCollection(pVector:Long) {
   
   var trumpMask = 0L
   
@@ -15,13 +15,16 @@ class CardCollection {
    * The vector is the representation of the Cards. The 32 bits stand for 32 Cards and are set to 1 when the Collections contains the nth Card.
    * Initially the vector is 0 so no card is in the Collection
    */
-  private var vector: Long = 0
+  private var vector: Long = pVector
   /**
    * Adds a (or more) Card(s) to the Collection. If you want to add more than one Card with one call you have to OR all the Cards which shall be added.
    * @param pCard the bit vector representation of the Card(s) to add - 32 bits as Long
    */
   def add(pCard: Long) = {
     vector |= 1 << pCard
+  }
+  def addCards(pCardVector: Long) = {
+    vector |= pCardVector
   }
   /**
    * Removes a (or more) Card(s) from the Collection. If you want to remove more than one Card with one call you have to OR all the Cards which shall be removed.
@@ -38,10 +41,17 @@ class CardCollection {
   def contains(pCard: Long): Boolean = {
     (vector & 1 << pCard) != 0
   }
-  
+  /**
+   * Sets the mask which filters every card which is not a trump card.
+   */
   def setTrumpMask(pTrump:Trump) = {
     trumpMask = pTrump.getMask
   }
+  
+  /**
+   * Overrides the toString method. It just prints the current Long as it is saved in the vector variable.
+   */
+  override def toString:String=vector.toString
   
   /**
    * Gives the number of Cards in the Collection.
@@ -64,4 +74,9 @@ class CardCollection {
   def flush = {
     vector = 0
   }
+  
+  /**
+   * Standard empty constructor which initializes the Collection with 0 so empty.
+   */
+  def this()=this(0L)
 }

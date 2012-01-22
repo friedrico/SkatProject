@@ -2,12 +2,10 @@
  *
  */
 package game
-import cards.Skat
-import cards.Trump
-import cards._
-import scala.xml.XML
-import cards.Hand
-import scala.xml.Elem
+import scala.xml.{XML, TopScope, Text, PrettyPrinter, Elem,UnprefixedAttribute}
+import cards.{Trump, Skat, Hand, _}
+import scala.xml.NodeSeq
+import java.text.ParseException
 
 /**
  * @author Oliver Friedrich
@@ -35,47 +33,38 @@ class Game {
    */
   var trump: Trump = Ramsch()
 
-  val tricks = List[(Int, Int, Int)]()
-
+  var tricks = List[(Int, Int, Int)]()
+  
   /**
    * Writes the current environment (which means the current state of the game) to the given file. It creates a XML file which represents the current state of the Game. So which Player has which Cards and who has to play the next Card. The syntax of the XML file is really easy. It shall describe the game readable and does not save it the most efficient way.
    * @param pPath the path where to create the XML file
    */
   def saveState(pPath: String): Elem = {
-    val saveXml =
-      <game>
-        <currentRound>
-          <trump>
-            { trump }
-          </trump>
-          <trick>
-            { currentTrick._1 }
-            ,
-            { currentTrick._2 }
-            ,
-            { currentTrick._3 }
-          </trick>
-          <skat>
-            { skat._1 }
-            { skat._2 }
-          </skat>
-        </currentRound>
-        <initialDistribution>
-          {
-            players(0).toXML
-            players(1).toXML
-            players(2).toXML
-          }
-        </initialDistribution>
-        <tricks>
-          {
-            for (trick <- tricks) { <trick>{ trick._1 },{ trick._2 },{ trick._3 }</trick> }
-          }
-        </tricks>
-        <serializedTree>
-        </serializedTree>
-      </game>
-    XML.save(pPath, saveXml)
+tricks++=List((1,2,3),(4,5,6))
+var outFile = new java.io.FileOutputStream(pPath)
+var outStream = new java.io.PrintStream(outFile)
+
+
+    val saveXml =	
+<game>
+<currentRound>
+<trump>{trump}</trump>
+<trick>{currentTrick._1},{currentTrick._2},{currentTrick._3}</trick>
+<skat>{skat._1},{skat._2}</skat>
+</currentRound>
+<initialDistribution>{players(0).toXML("0")++players(1).toXML("1")++players(2).toXML("2")}</initialDistribution>
+<tricks>{for (trick <- tricks) yield {<trick>{trick._1},{trick._2},{trick._3}</trick>}}</tricks>
+<serializedTree></serializedTree>
+</game>
+
+    val prettyPrinter = new PrettyPrinter(30,2)
+    val outString = prettyPrinter.format(saveXml)
+    println(outString)
+   // XML.save(pPath, saveXml)
+    outStream.print(outString)
+    outStream.close
+    outStream=null
+    outFile=null
     saveXml
   }
   /**
@@ -84,14 +73,16 @@ class Game {
    */
   def readState(pPath: String) = {
     val readXml = XML.load(pPath)
-
-    skat = ((readXml \ "skat").text.split(",")(0).toLong, (readXml \ "skat").text.split(",")(1).toLong)
-
-    currentTrick = ((readXml \ "trick").text.split(",")(0).toLong,
-      (readXml \ "trick").text.split(",")(1).toLong,
-      (readXml \ "trick").text.split(",")(2).toLong)
-
-    trump = (readXml \ "trump").text match {
+    if(!(readXml \"currentRound" \ "skat").isEmpty)
+   	 skat = ((readXml \"currentRound" \ "skat").text.split(",")(0).toLong, 
+   			 	(readXml \"currentRound" \ "skat").text.split(",")(1).toLong)
+   	 
+	if(!(readXml \"currentRound" \ "trick").isEmpty)
+    currentTrick = ((readXml \"currentRound" \ "trick").text.split(",")(0).toLong,
+					      (readXml \"currentRound" \ "trick").text.split(",")(1).toLong,
+					      (readXml \"currentRound" \ "trick").text.split(",")(2).toLong)
+      
+    trump = (readXml \"currentRound" \ "trump").text match {
       case "Hearts" => Hearts()
       case "Spades" => Spades()
       case "Ramsch" => Ramsch()
@@ -99,7 +90,11 @@ class Game {
       case "Null" => Null()
       case "Grand" => Grand()
       case "Diamonds" => Diamonds()
+      case _ => throw new ParseException("The trump couldn't be read correctly",0)
     }
+    
+    
+    
   }
   /**
    * Deals the Cards. Will create a Skat and give 10 Cards to every Player
@@ -124,9 +119,9 @@ class Game {
     //	    -------------------------------
     //	    +		   		     = 4294967295	= 2^32 - 1 => correct
 
-    players(0).handCards.add(3011576193L)
-    players(1).handCards.add(1142575622L)
-    players(2).handCards.add(140781688L)
+    players(0).handCards.addCards(3011576193L)
+    players(1).handCards.addCards(1142575622L)
+    players(2).handCards.addCards(140781688L)
     skat = (10L, 15L)
   }
   /**
