@@ -9,8 +9,10 @@ object Main {
     }
     
     val c:Game= new Game
+    val c2:Game= new Game
+    c.initialize
     c.saveState("Test2")
-    c.readState("Test2")
-    c.saveState("Test3")
+   // c2.readState("Test2")
+    c2.saveState("Test3")
   }
 }

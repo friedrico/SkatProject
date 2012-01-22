@@ -15,7 +15,7 @@ class CardCollection(pVector:Long) {
    * The vector is the representation of the Cards. The 32 bits stand for 32 Cards and are set to 1 when the Collections contains the nth Card.
    * Initially the vector is 0 so no card is in the Collection
    */
-  private var vector: Long = pVector
+  var vector: Long = pVector
   /**
    * Adds a (or more) Card(s) to the Collection. If you want to add more than one Card with one call you have to OR all the Cards which shall be added.
    * @param pCard the bit vector representation of the Card(s) to add - 32 bits as Long
@@ -74,7 +74,7 @@ class CardCollection(pVector:Long) {
   def flush = {
     vector = 0
   }
-  
+
   /**
    * Standard empty constructor which initializes the Collection with 0 so empty.
    */

@@ -23,7 +23,7 @@ class Game {
    */
   var skat: (Long, Long) = (0L, 0L)
   // deal out the cards to the skat and to the players.
-  initialize
+ // initialize
   /**
    * The Trick which represents the current Cards on the table and where every Player has to play his Cards
    */
@@ -91,10 +91,24 @@ var outStream = new java.io.PrintStream(outFile)
       case "Grand" => Grand()
       case "Diamonds" => Diamonds()
       case _ => throw new ParseException("The trump couldn't be read correctly",0)
+      
+      
     }
-    
-    
-    
+    val tmpPlayers= readXml \"initialDistribution"\"player"
+    var i=0
+    tmpPlayers.foreach({tmpPlayer=>
+      players(i).handCards.vector=(tmpPlayer\"hand").text.toLong
+      players(i).friendIndex=(tmpPlayer\"friend").text.toInt
+      players(i).ownPoints=(tmpPlayer\"points"\"own").text.toInt
+      players(i).opposingPoints=(tmpPlayer\"points"\"opposing").text.toInt
+      i+=1
+    })
+//    val ownPoints=
+//    val opposingPoints
+//    val hand
+//    val friendIndex
+//    val cardLikelihoodMap
+//    
   }
   /**
    * Deals the Cards. Will create a Skat and give 10 Cards to every Player
