@@ -16,7 +16,7 @@ class Game {
    * A list of players. the players are listed in follow way:
    * player0, player1, player2, player0, player1
    */
-  var players = List(new Player(), new Player())
+  var players = List(new Player(false), new Player())
   players ++= new Player() :: players
   /**
    * The two Cards which lent the name to the Game.

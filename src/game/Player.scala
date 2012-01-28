@@ -8,37 +8,41 @@ import cards.{Trump, Hand, Diamonds, CardLikelihoodMap}
  * @author Oliver Friedrich
  *
  */
-class Player(pFriendIndex: Int, pHand: Hand) {
+class Player(pFriendIndex: Int, pHand: Hand, pIsComputer:Boolean) {
+	val isComputer = pIsComputer
 	/**
 	 *
 	 */
 	val handCards = pHand
-			/**
-			 *
-			 */
-			val leftLikelihood = new CardLikelihoodMap
-			/**
-			 *
-			 */
-			val rightLikelihood = new CardLikelihoodMap
-			/**
-			 *
-			 */
-			var ownPoints = 0
-			/**
-			 *
-			 */
-			var opposingPoints = 0
-			/**
-			 *
-			 */
-			var friendIndex = pFriendIndex
-			/**
-			 * @param pTrick
-			 * @return
-			 */
-			def getNextCard(pTrick: (Long, Long, Long)): Int = {
-		0
+	/**
+	 *
+	 */
+	val leftLikelihood = new CardLikelihoodMap
+	/**
+	 *
+	 */
+	val rightLikelihood = new CardLikelihoodMap
+	/**
+	 *
+	 */
+	var ownPoints = 0
+	/**
+	 *
+	 */
+	var opposingPoints = 0
+	/**
+	 *
+	 */
+	var friendIndex = pFriendIndex
+	/**
+	 * @param pTrick
+	 * @return
+	 */
+	def getNextCard(pTrick: (Long, Long, Long)): Int = {
+		if(isComputer)
+			0
+		else
+		  Console.readInt
 	}
 
 	/**
@@ -63,6 +67,8 @@ class Player(pFriendIndex: Int, pHand: Hand) {
 		<cardlikelihoodmaps>{leftLikelihood.toXML("0")++rightLikelihood.toXML("1")}</cardlikelihoodmaps>
 		</player>
 	}
-	def this(pFriendIndex: Int) = this(pFriendIndex, new Hand)
-	def this() = this(0, new Hand)
+	def this(pFriendIndex: Int) = this(pFriendIndex, new Hand,true)
+	def this() = this(0, new Hand,true)
+	def this(pFriendIndex: Int,pIsComputer:Boolean) = this(pFriendIndex, new Hand,pIsComputer)
+	def this(pIsComputer:Boolean) = this(0, new Hand,pIsComputer)
 }
