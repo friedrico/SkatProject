@@ -37,28 +37,16 @@ class Hand extends CardCollection {
     suit match {
       // TODO : constants for cases
       case 0 => // diamond
-        if ((vector & 0xEFL) == 0L) {
-          return vector
-        }
-        return (vector & 0xEFL)
+        if ((vector & 0x000000EFL) == 0L) vector else (vector & 0x000000EFL)
       case 1 => // heart
-        if ((vector & 0xEF00L) == 0L) {
-          return vector
-        }
-        return (vector & 0xEF00L)
+        if ((vector & 0x0000EF00L) == 0L) vector else (vector & 0x0000EF00L)
       case 2 => // spades
-        if ((vector & 0xEF0000L) == 0L) {
-          return vector
-        }
-        return (vector & 0xEF0000L)
+        if ((vector & 0x00EF0000L) == 0L) vector else (vector & 0x00EF0000L)
       case 3 => // clubs
-        if ((vector & 0xEF000000L) == 0L) {
-          return vector
-        }
-        return (vector & 0xEF000000L)
+        if ((vector & 0xEF000000L) == 0L) vector else (vector & 0xEF000000L)
+      case _ => -1
     }
-    // not implemented, so we return exit_failure
-    return -1
+
   }
 
 }
