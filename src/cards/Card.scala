@@ -78,7 +78,44 @@ object Card {
     pCard % 8
   }
 
-  
+  def toString(pCard:Int):String={
+    List(0x2666.toChar+"7",
+         0x2666.toChar+"8",
+         0x2666.toChar+"9",
+         0x2666.toChar+"10",
+         0x2666.toChar+"J",
+         0x2666.toChar+"Q",
+         0x2666.toChar+"K",
+         0x2666.toChar+"A",
+         
+         0x2665.toChar+"7",
+         0x2665.toChar+"8",
+         0x2665.toChar+"9",
+         0x2665.toChar+"10",
+         0x2665.toChar+"J",
+         0x2665.toChar+"Q",
+         0x2665.toChar+"K",
+         0x2665.toChar+"A",
+         
+         0x2660.toChar+"7",
+         0x2660.toChar+"8",
+         0x2660.toChar+"9",
+         0x2660.toChar+"10",
+         0x2660.toChar+"J",
+         0x2660.toChar+"Q",
+         0x2660.toChar+"K",
+         0x2660.toChar+"A",
+         
+         0x2663.toChar+"7",
+         0x2663.toChar+"8",
+         0x2663.toChar+"9",
+         0x2663.toChar+"10",
+         0x2663.toChar+"J",
+         0x2663.toChar+"Q",
+         0x2663.toChar+"K",
+         0x2663.toChar+"A"
+         )(pCard)
+  }
   
   
   

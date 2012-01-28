@@ -2,7 +2,8 @@
  *
  */
 package game
-import cards.{Trump, Hand, Diamonds, CardLikelihoodMap}
+import cards.{Trump, Hand, Ramsch, CardLikelihoodMap,Card}
+import scala.collection.mutable.HashMap
 
 /**
  * @author Oliver Friedrich
@@ -38,11 +39,27 @@ class Player(pFriendIndex: Int, pHand: Hand, pIsComputer:Boolean) {
 	 * @param pTrick
 	 * @return
 	 */
-	def getNextCard(pTrick: (Long, Long, Long)): Int = {
+	def getNextCard(pTrick: (Int, Int, Int,Int)): Int = {
 		if(isComputer)
 			0
-		else
-		  Console.readInt
+		else{
+		  var map=new HashMap[Int,Int]()
+		  var index=1
+		  val sb=new StringBuilder
+		  val sb2=new StringBuilder
+		  for(i<-0 to 31){
+ 		    if(handCards.filter(Card.getSuit(pTrick._4)).contains(i)){
+ 		      sb.append(Card.toString(i)).append("\t")
+ 		      sb2.append(index.toString).append("\t")
+ 		      map+= index->i 
+		      index=index+1
+ 		    }
+		  }
+		  println(sb.append("\n").append(sb2).append("\n").append("Choose a card:"))
+		  var chosen=Console.readInt
+		  println("You choosed: "+chosen.toString+" which is "+Card.toString(map(chosen)))
+		  map(chosen)
+		}
 	}
 
 	/**
@@ -52,8 +69,8 @@ class Player(pFriendIndex: Int, pHand: Hand, pIsComputer:Boolean) {
 	 */
 	def getTrump(): Trump = {
 			// TODO: calculate best trump.
-			var trump:Trump = new Diamonds
-					return trump
+			var trump:Trump = Ramsch()
+			trump
 	}
 
 	def toXML(pId:String) = {

@@ -21,26 +21,26 @@ class Game {
   /**
    * The two Cards which lent the name to the Game.
    */
-  var skat: (Long, Long) = (0L, 0L)
+  var skat: (Int, Int) = (0, 0)
   // deal out the cards to the skat and to the players.
  // initialize
   /**
    * The Trick which represents the current Cards on the table and where every Player has to play his Cards
    */
-  var currentTrick: (Long, Long, Long) = (0L, 0L, 0L)
+  var currentTrick: (Int, Int, Int, Int) = (0,0,0,0)
   /**
    * The current Trump of the Game.
    */
   var trump: Trump = Ramsch()
 
-  var tricks = List[(Int, Int, Int)]()
+  var tricks = List[(Int, Int, Int, Int)]()
   
   /**
    * Writes the current environment (which means the current state of the game) to the given file. It creates a XML file which represents the current state of the Game. So which Player has which Cards and who has to play the next Card. The syntax of the XML file is really easy. It shall describe the game readable and does not save it the most efficient way.
    * @param pPath the path where to create the XML file
    */
   def saveState(pPath: String): Elem = {
-tricks++=List((1,2,3),(4,5,6))
+tricks++=List((1,2,3,1),(4,5,6,1))
 var outFile = new java.io.FileOutputStream(pPath)
 var outStream = new java.io.PrintStream(outFile)
 
@@ -49,7 +49,7 @@ var outStream = new java.io.PrintStream(outFile)
 <game>
 <currentRound>
 <trump>{trump}</trump>
-<trick>{currentTrick._1},{currentTrick._2},{currentTrick._3}</trick>
+<trick>{currentTrick._1},{currentTrick._2},{currentTrick._3},{currentTrick._4}</trick>
 <skat>{skat._1},{skat._2}</skat>
 </currentRound>
 <initialDistribution>{players(0).toXML("0")++players(1).toXML("1")++players(2).toXML("2")}</initialDistribution>
@@ -74,13 +74,14 @@ var outStream = new java.io.PrintStream(outFile)
   def readState(pPath: String) = {
     val readXml = XML.load(pPath)
     if(!(readXml \"currentRound" \ "skat").isEmpty)
-   	 skat = ((readXml \"currentRound" \ "skat").text.split(",")(0).toLong, 
-   			 	(readXml \"currentRound" \ "skat").text.split(",")(1).toLong)
+   	 skat = ((readXml \"currentRound" \ "skat").text.split(",")(0).toInt, 
+   			 	(readXml \"currentRound" \ "skat").text.split(",")(1).toInt)
    	 
 	if(!(readXml \"currentRound" \ "trick").isEmpty)
-    currentTrick = ((readXml \"currentRound" \ "trick").text.split(",")(0).toLong,
-					      (readXml \"currentRound" \ "trick").text.split(",")(1).toLong,
-					      (readXml \"currentRound" \ "trick").text.split(",")(2).toLong)
+    currentTrick = ((readXml \"currentRound" \ "trick").text.split(",")(0).toInt,
+					      (readXml \"currentRound" \ "trick").text.split(",")(1).toInt,
+					      (readXml \"currentRound" \ "trick").text.split(",")(2).toInt,
+					      (readXml \"currentRound" \ "trick").text.split(",")(3).toInt)
       
     trump = (readXml \"currentRound" \ "trump").text match {
       case "Hearts" => Hearts()
@@ -136,7 +137,7 @@ var outStream = new java.io.PrintStream(outFile)
     players(0).handCards.addCards(3011576193L)
     players(1).handCards.addCards(1142575622L)
     players(2).handCards.addCards(140781688L)
-    skat = (10L, 15L)
+    skat = (10, 15)
   }
   /**
    * Returns the number of steps needed to calculate the

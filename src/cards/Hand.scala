@@ -7,7 +7,7 @@ package cards
  * @author Oliver Friedrich
  *
  */
-class Hand extends CardCollection {
+class Hand(pVector:Long) extends CardCollection(pVector) {
 
   var trumpMask = 0L
 
@@ -24,29 +24,29 @@ class Hand extends CardCollection {
    * @param : the suit of a card.
    * @return : the cards, which would match with this card.
    */
-  def filter(suit: Int): Long = {
+  def filter(suit: Int): Hand = {
     // the card is a trump card.
     if (suit == trumpSuit) {
       if ((vector & trumpMask) == 0L) {
-        return vector
+         this
       }
-      return vector & trumpMask
+      	new Hand(vector & trumpMask)
     }
 
     // the card is not a trump card.
     suit match {
       // TODO : constants for cases
       case 0 => // diamond
-        if ((vector & 0x000000EFL) == 0L) vector else (vector & 0x000000EFL)
+        if ((vector & 0x000000EFL) == 0L) this else new Hand(vector & 0x000000EFL)
       case 1 => // heart
-        if ((vector & 0x0000EF00L) == 0L) vector else (vector & 0x0000EF00L)
+        if ((vector & 0x0000EF00L) == 0L) this else new Hand(vector & 0x0000EF00L)
       case 2 => // spades
-        if ((vector & 0x00EF0000L) == 0L) vector else (vector & 0x00EF0000L)
+        if ((vector & 0x00EF0000L) == 0L) this else new Hand(vector & 0x00EF0000L)
       case 3 => // clubs
-        if ((vector & 0xEF000000L) == 0L) vector else (vector & 0xEF000000L)
-      case _ => -1
+        if ((vector & 0xEF000000L) == 0L) this else new Hand(vector & 0xEF000000L)
+      case _ => throw new Exception("Not implemented yet")
     }
 
   }
-
+def this()=this(0)
 }
