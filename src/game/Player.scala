@@ -57,6 +57,11 @@ class Player(pFriendIndex: Int, pHand: Hand, pIsComputer:Boolean) {
 		  }
 		  println(sb.append("\n").append(sb2).append("\n").append("Choose a card:"))
 		  var chosen=Console.readInt
+		  while(chosen<1||chosen>=index){
+		    println("The number you have choosed is out of range. Please choose another one")
+		    println(sb)
+		    chosen=Console.readInt
+		  }
 		  println("You choosed: "+chosen.toString+" which is "+Card.toString(map(chosen)))
 		  map(chosen)
 		}
