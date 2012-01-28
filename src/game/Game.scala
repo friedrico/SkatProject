@@ -176,7 +176,7 @@ var outStream = new java.io.PrintStream(outFile)
    * @param pTrump = the trump, which was chosen by another player.
    */
   def trumpToOtherPlayers(pPlayer: Player, pTrump: Trump) = {
-    pPlayer.handCards.setTrumpMask(pTrump)
+    pPlayer.handCards.setTrump(pTrump)
   }
 
 }
