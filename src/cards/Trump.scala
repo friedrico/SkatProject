@@ -26,11 +26,11 @@ case class Diamonds extends Trump {
     // 0000 0000 0000 0000 0000 0000 1111 1111 = 255L = Diamonds
     // 0001 0000 0001 0000 0001 0000 0001 0000 = 269488144L = Jacks
     // 0001 0000 0001 0000 0001 0000 1111 1111 = 269488383L = Diamonds | Jacks
-    return 0x101010FFL
+    0x101010FFL
   }
 
   def getSuit(): Int = {
-    return 0
+    0
   }
   override def toString = "Diamonds"
 }
@@ -48,11 +48,11 @@ case class Hearts extends Trump {
     // 0000 0000 0000 0000 1111 1111 0000 0000 = 65280L = Hearts
     // 0001 0000 0001 0000 0001 0000 0001 0000 = 269488144L = Jacks
     // 0001 0000 0001 0000 1111 1111 0001 0000 = 269549328L = Hearts | Jacks
-    return 0x1010FF10L
+    0x1010FF10L
   }
 
   def getSuit(): Int = {
-    return 1
+    1
   }
   override def toString = "Hearts"
 }
@@ -65,7 +65,7 @@ case class Spades extends Trump {
     // 0000 0000 1111 1111 0000 0000 0000 0000 = 16711680L = Spades
     // 0001 0000 0001 0000 0001 0000 0001 0000 = 269488144L = Jacks
     // 0001 0000 1111 1111 0001 0000 0001 0000 = 285151248L = Spades + Jacks
-    return 285151248L
+    0x10FF1010L
   }
 
   def getSuit(): Int = {
@@ -88,11 +88,11 @@ case class Clubs extends Trump {
     // 1111 1111 0000 0000 0000 0000 0000 0000 = 4278190080L = Clubs
     // 0001 0000 0001 0000 0001 0000 0001 0000 = 269488144L = Jacks
     // 1111 1111 0001 0000 0001 0000 0001 0000 = 4279242768L = Clubs | Jacks
-    return 0xFF101010L
+    0xFF101010L
   }
 
   def getSuit(): Int = {
-    return 3
+    3
   }
 
   override def toString = "Clubs"
@@ -103,11 +103,11 @@ case class Clubs extends Trump {
  */
 case class Null extends Trump {
   def getMask(): Long = {
-    return 0L
+    0L
   }
 
   def getSuit(): Int = {
-    return 5
+    5
   }
 
   override def toString = "Null"
@@ -120,7 +120,7 @@ case class Grand extends Trump {
   def getMask(): Long = {
     // 10101010 = Jacks
     // 00010000000100000001000000010000 = 269488144L = Jacks 
-    return 0x10101010L
+    0x10101010L
   }
 
   def getSuit(): Int = {
@@ -137,7 +137,7 @@ case class Ramsch extends Trump {
   def getMask(): Long = {
     // 10101010 = Jacks
     // 00010000000100000001000000010000 = 269488144L = Jacks
-    return 0x10101010L
+    0x10101010L
   }
 
   def getSuit(): Int = {
