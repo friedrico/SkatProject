@@ -6,6 +6,8 @@ import scala.xml.{XML, TopScope, Text, PrettyPrinter, Elem,UnprefixedAttribute}
 import cards.{Trump, Skat, Hand, _}
 import scala.xml.NodeSeq
 import java.text.ParseException
+import scala.collection.mutable.ListBuffer
+import util.Graph
 
 /**
  * @author Oliver Friedrich
@@ -16,8 +18,8 @@ class Game {
    * A list of players. the players are listed in follow way:
    * player0, player1, player2, player0, player1
    */
-  var players = List(new Player(false), new Player())
-  players ++= new Player() :: players
+  var players = List(new Player(false), new Player(false))
+  players ++= new Player(false) :: players
   /**
    * The two Cards which lent the name to the Game.
    */
@@ -26,21 +28,25 @@ class Game {
  // initialize
   /**
    * The Trick which represents the current Cards on the table and where every Player has to play his Cards
+   * The first 3 Cards are the played Cards, the fourth is a redundancy which is the forehand's Card.
    */
-  var currentTrick: (Int, Int, Int, Int) = (0,0,0,0)
+  var currentTrick: ListBuffer[Option[Int]] = ListBuffer(None,None,None,None)
   /**
    * The current Trump of the Game.
    */
   var trump: Trump = Ramsch()
 
-  var tricks = List[(Int, Int, Int, Int)]()
+  var tricks = List[List[Option[Int]]]()
+  
+  val graph = new Graph[List[Option[Int]],Int] //NodeValue, EdgeValue
+  
+  
   
   /**
    * Writes the current environment (which means the current state of the game) to the given file. It creates a XML file which represents the current state of the Game. So which Player has which Cards and who has to play the next Card. The syntax of the XML file is really easy. It shall describe the game readable and does not save it the most efficient way.
    * @param pPath the path where to create the XML file
    */
   def saveState(pPath: String): Elem = {
-tricks++=List((1,2,3,1),(4,5,6,1))
 var outFile = new java.io.FileOutputStream(pPath)
 var outStream = new java.io.PrintStream(outFile)
 
@@ -49,11 +55,11 @@ var outStream = new java.io.PrintStream(outFile)
 <game>
 <currentRound>
 <trump>{trump}</trump>
-<trick>{currentTrick._1},{currentTrick._2},{currentTrick._3},{currentTrick._4}</trick>
+<trick>{currentTrick(0)},{currentTrick(1)},{currentTrick(2)},{currentTrick(3)}</trick>
 <skat>{skat._1},{skat._2}</skat>
 </currentRound>
 <initialDistribution>{players(0).toXML("0")++players(1).toXML("1")++players(2).toXML("2")}</initialDistribution>
-<tricks>{for (trick <- tricks) yield {<trick>{trick._1},{trick._2},{trick._3}</trick>}}</tricks>
+<tricks>{for (trick <- tricks) yield {<trick>{trick(0)},{trick(1)},{trick(2)},{trick(3)}</trick>}}</tricks>
 <serializedTree></serializedTree>
 </game>
 
@@ -77,11 +83,13 @@ var outStream = new java.io.PrintStream(outFile)
    	 skat = ((readXml \"currentRound" \ "skat").text.split(",")(0).toInt, 
    			 	(readXml \"currentRound" \ "skat").text.split(",")(1).toInt)
    	 
-	if(!(readXml \"currentRound" \ "trick").isEmpty)
-    currentTrick = ((readXml \"currentRound" \ "trick").text.split(",")(0).toInt,
-					      (readXml \"currentRound" \ "trick").text.split(",")(1).toInt,
-					      (readXml \"currentRound" \ "trick").text.split(",")(2).toInt,
-					      (readXml \"currentRound" \ "trick").text.split(",")(3).toInt)
+	if(!(readXml \"currentRound" \ "trick").isEmpty){
+	  currentTrick = ListBuffer(Some((readXml \"currentRound" \ "trick").text.split(",")(0).toInt), //TODO Some shouldnt be possible when None is saved
+					      Some((readXml \"currentRound" \ "trick").text.split(",")(1).toInt),
+					      Some((readXml \"currentRound" \ "trick").text.split(",")(2).toInt),
+					      Some((readXml \"currentRound" \ "trick").text.split(",")(3).toInt))
+	}
+    
       
     trump = (readXml \"currentRound" \ "trump").text match {
       case "Hearts" => Hearts()
@@ -134,9 +142,9 @@ var outStream = new java.io.PrintStream(outFile)
     //	    -------------------------------
     //	    +		   		     = 4294967295	= 2^32 - 1 => correct
 
-    players(0).handCards.addCards(3011576193L)
-    players(1).handCards.addCards(1142575622L)
-    players(2).handCards.addCards(140781688L)
+    players(0).handCards.addCards(0xB3810181L)
+    players(1).handCards.addCards(0x441A5206L)
+    players(2).handCards.addCards(0x08642878L)
     skat = (10, 15)
   }
   /**
@@ -155,6 +163,8 @@ var outStream = new java.io.PrintStream(outFile)
     val trump:Trump = players(winnerPlayerIndex).getTrump()
     trumpToOtherPlayers(players(winnerPlayerIndex + 1), trump)
     trumpToOtherPlayers(players(winnerPlayerIndex + 2), trump)
+    
+    buildGraph
   }
   /**
    * the players bids for the game.
@@ -179,5 +189,105 @@ var outStream = new java.io.PrintStream(outFile)
   def trumpToOtherPlayers(pPlayer: Player, pTrump: Trump) = {
     pPlayer.handCards.setTrump(pTrump)
   }
+/**
+ * @return winner's index
+ */
+  def playRound(startIndex:Int):Int={
+    currentTrick=ListBuffer(None,None,None,None)
+    val firstCard=players(startIndex).getNextCard(currentTrick)
+    currentTrick(3)=firstCard
+    currentTrick(startIndex)=firstCard
+    currentTrick(startIndex+1%3)=players(startIndex+1).getNextCard(currentTrick)
+    currentTrick(startIndex+2%3)=players(startIndex+2).getNextCard(currentTrick)
+    
+    val windex=getWinner(currentTrick)
+    println(windex)
+    windex
+  }
 
+  
+  def getWinner(pTrick:ListBuffer[Option[Int]]):Int={
+    pTrick match{
+      case ListBuffer(Some(a),Some(b),Some(c),Some(d)) => 
+        if(compareCards(a,b)==a){
+          if(compareCards(a,c)==a) 0 //c<b<a
+          else 3 //b<a<c
+        }
+        else{
+	        if(compareCards(b,c)==b) 1 //c<a<b
+	        else 3 //a<b<c
+        }
+      case _ => throw new Exception("Current Trick seems to be empty")
+    } 
+  }
+  
+  /**
+   * Compares two Cards and returns the better one depending on the current Trump
+   */
+  def compareCards(pCard1:Int, pCard2:Int):Int={
+      trump match{
+	      case Ramsch() | Grand()=> 
+	        if(Card.getRank(pCard1)%8==Card.JackModulo && Card.getRank(pCard2)%8==Card.JackModulo) Math.max(pCard1,pCard2) // two Jacks => higher rank wins
+	        else if(Card.getRank(pCard1)%8==Card.JackModulo) pCard1 //one Jack => wins
+	        else if(Card.getRank(pCard2)%8==Card.JackModulo) pCard2 //the other Jack => wins
+	        else help(-1,pCard1,pCard2)
+	      case Null() => help(-1,pCard1,pCard2)
+	      case Diamonds() =>help(Card.DiamondsQuotient,pCard1,pCard2)
+	      case Clubs() =>help(Card.ClubsQuotient,pCard1,pCard2)
+	      case Hearts() =>help(Card.HeartsQuotient,pCard1,pCard2)
+	      case Spades() =>help(Card.SpadesQuotient,pCard1,pCard2)
+      }
+    }
+  /**
+   * Defines a relation between two Cards and returns the better one, depending on the given Trump
+   * @return the best of two Cards
+   */
+  def help(trump:Int,pCard1:Int,pCard2:Int):Int={
+    if(Card.getSuit(pCard1)==trump && Card.getSuit(pCard2)==trump||Card.getRank(pCard1)%8==Card.JackModulo && Card.getRank(pCard2)%8==Card.JackModulo){ // both trump
+      if(Card.getRank(pCard1)%8==Card.JackModulo && Card.getRank(pCard2)%8==Card.JackModulo //both Jacks or both not
+          || Card.getRank(pCard1)%8!=Card.JackModulo && Card.getRank(pCard2)%8!=Card.JackModulo){
+        if(Card.getRank(pCard1)%8==Card.TenModulo&&Card.getRank(pCard2)%8!=Card.AceModulo) pCard1 //first is ten and higher
+        else if(Card.getRank(pCard2)%8==Card.TenModulo&&Card.getRank(pCard1)%8!=Card.AceModulo) pCard2 //second is ten and higher
+        else Math.max(pCard1,pCard2) //the higher rank wins
+      }
+      else if(Card.getRank(pCard1)%8==Card.JackModulo) pCard1 //one is Jack => wins
+      else pCard2 //if(Card.getRank(pCard2)%8==Card.JackModulo) pCard2 //the other is Jack => wins
+    }
+    else if((Card.getSuit(pCard1)==trump || Card.getRank(pCard1)%8==Card.JackModulo) && (Card.getSuit(pCard2)!=trump|| Card.getRank(pCard2)%8!=Card.JackModulo)) pCard1//first is trump, the other not => trump wins
+    else if((Card.getSuit(pCard2)==trump || Card.getRank(pCard2)%8==Card.JackModulo) && (Card.getSuit(pCard1)!=trump|| Card.getRank(pCard1)%8!=Card.JackModulo)) pCard2//the other is trump, the first not => trump wins
+    else{ //no trump
+      if(Card.getSuit(pCard1)==Card.getSuit(pCard2)){ //both suits are equal
+        if(Card.getRank(pCard1)%8==Card.TenModulo&&Card.getRank(pCard2)%8!=Card.AceModulo) pCard1 //first is ten and higher
+        else if(Card.getRank(pCard2)%8==Card.TenModulo&&Card.getRank(pCard1)%8!=Card.AceModulo) pCard2 //second is ten and higher
+        else Math.max(pCard1,pCard2) //the higher rank wins
+      }
+      else{ //different suits => first wins
+        pCard1
+      }
+    }
+  }
+  /*
+   * a,b
+   * if (trumpf a, trumpf b)
+   * 		if a != bube ^ b != bube || abube^bbube
+   * 			max(Rang a, Rang b)
+   *     if a bube ^ b!= bube => a
+   *     if a!=bube ^ b==bube => b
+   * if(a trumpf, b!=trump)=> a
+   * if(b trump, a!= trumpf)=>b
+   * if(a !0 trumpf, b != trumpf)
+   *     if(suit a != suit b) => a
+   *     else
+   *     	max(Rang a, rang b)
+   */
+  def buildGraph()={
+    /*
+     * firstPlayerAllHand:play1
+     * snd playPoss
+     * trd playPoss
+     * backtrack: trd playPoss
+     */
+    //var tmpTrick=players(0).getNextCard(None,None,None,None)
+    //var node=graph.addNode()
+  }
 }

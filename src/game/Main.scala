@@ -6,7 +6,7 @@ object Main {
     
     val c:Game= new Game
     c.initialize
-    c.players(0).getNextCard((0,0,0,4))
+    c.playRound(0)
 
 
   }

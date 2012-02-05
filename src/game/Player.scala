@@ -4,6 +4,7 @@
 package game
 import cards.{Trump, Hand, Ramsch, CardLikelihoodMap,Card}
 import scala.collection.mutable.HashMap
+import scala.collection.mutable.ListBuffer
 
 /**
  * @author Oliver Friedrich
@@ -39,21 +40,41 @@ class Player(pFriendIndex: Int, pHand: Hand, pIsComputer:Boolean) {
 	 * @param pTrick
 	 * @return
 	 */
-	def getNextCard(pTrick: (Int, Int, Int,Int)): Int = {
+	def getNextCard(pTrick: ListBuffer[Option[Int]]): Option[Int]= {
 		if(isComputer)
-			0
+			None
 		else{
 		  var map=new HashMap[Int,Int]()
 		  var index=1
 		  val sb=new StringBuilder
 		  val sb2=new StringBuilder
+		  sb.append("Current Trick: ")
+		  pTrick.foreach{
+		    rawcard => rawcard match{
+		    	case Some(card)=> sb.append(Card.toString(card))
+		    	case _ => sb.append("_ ")
+		    }
+		  }
+		  sb.append("\n")
 		  for(i<-0 to 31){
- 		    if(handCards.filter(Card.getSuit(pTrick._4)).contains(i)){
- 		      sb.append(Card.toString(i)).append("\t")
- 		      sb2.append(index.toString).append("\t")
- 		      map+= index->i 
-		      index=index+1
- 		    }
+		    pTrick(3) match{
+		      case Some(pCard) => //I'm middle- or rearHand
+		        			if(handCards.filter(Card.getSuit(pCard)).contains(i)){
+				 		      sb.append(Card.toString(i)).append("\t")
+				 		      sb2.append(index.toString).append("\t")
+				 		      map+= index->i 
+						      index=index+1
+					      }
+		      case None=> //I'm forehand - not really nice done...
+			        if(handCards.contains(i)){
+			 		      sb.append(Card.toString(i)).append("\t")
+			 		      sb2.append(index.toString).append("\t")
+			 		      map+= index->i 
+					      index=index+1
+				      }
+
+		    }
+
 		  }
 		  println(sb.append("\n").append(sb2).append("\n").append("Choose a card:"))
 		  var chosen=Console.readInt
@@ -62,8 +83,8 @@ class Player(pFriendIndex: Int, pHand: Hand, pIsComputer:Boolean) {
 		    println(sb)
 		    chosen=Console.readInt
 		  }
-		  println("You choosed: "+chosen.toString+" which is "+Card.toString(map(chosen)))
-		  map(chosen)
+		 // println("You choosed: "+chosen.toString+" which is "+Card.toString(map(chosen)))
+		  Some(map(chosen))
 		}
 	}
 
