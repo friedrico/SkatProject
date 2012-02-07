@@ -25,11 +25,11 @@ class CardCollection(pVector:Long) {
     vector |= pCardVector
   }
   /**
-   * Removes a (or more) Card(s) from the Collection. If you want to remove more than one Card with one call you have to OR all the Cards which shall be removed.
-   * @param pCard the bit vector representation of the Card(s) to remove - 32 bits as Long
+   * Removes a Card from the Collection.
+   * @param pCard the Card to remove
    */
   def remove(pCard: Int) = {
-    vector &= 1 << ~pCard
+    vector &= ~(1 << pCard)
   }
   /**
    * Tests if the given Card(s) is/are part of the Collection. If you want to test whether more than one Card are in the Collection with one call you have to OR all the Cards which shall be tested.

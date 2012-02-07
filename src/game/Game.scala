@@ -36,7 +36,7 @@ class Game {
    */
   var trump: Trump = Ramsch()
 
-  var tricks = List[List[Option[Int]]]()
+  var tricks = List[ListBuffer[Option[Int]]]()
   
   val graph = new Graph[List[Option[Int]],Int] //NodeValue, EdgeValue
   
@@ -194,28 +194,42 @@ var outStream = new java.io.PrintStream(outFile)
  */
   def playRound(startIndex:Int):Int={
     currentTrick=ListBuffer(None,None,None,None)
+    println("Player: "+startIndex)
     val firstCard=players(startIndex).getNextCard(currentTrick)
-    currentTrick(3)=firstCard
+for(i<-1 to 10){println("\n")}
+currentTrick(3)=firstCard
     currentTrick(startIndex)=firstCard
-    currentTrick(startIndex+1%3)=players(startIndex+1).getNextCard(currentTrick)
-    currentTrick(startIndex+2%3)=players(startIndex+2).getNextCard(currentTrick)
+    println("Player: "+(startIndex+1))
+    currentTrick((startIndex+1)%3)=players(startIndex+1).getNextCard(currentTrick)
+for(i<-1 to 10){println("\n")}
+    println("Player: "+(startIndex+2))
+    currentTrick((startIndex+2)%3)=players(startIndex+2).getNextCard(currentTrick)
     
     val windex=getWinner(currentTrick)
+    println("WonBy: "+windex)
+
+    tricks::=currentTrick
     println(windex)
     windex
   }
 
+  def playGame(startIndex:Int){
+    var windex=startIndex
+    for(i<-1 to 10){
+      windex=playRound(windex)
+    }
+  }
   
   def getWinner(pTrick:ListBuffer[Option[Int]]):Int={
     pTrick match{
       case ListBuffer(Some(a),Some(b),Some(c),Some(d)) => 
         if(compareCards(a,b)==a){
           if(compareCards(a,c)==a) 0 //c<b<a
-          else 3 //b<a<c
+          else 2 //b<a<c
         }
         else{
 	        if(compareCards(b,c)==b) 1 //c<a<b
-	        else 3 //a<b<c
+	        else 2 //a<b<c
         }
       case _ => throw new Exception("Current Trick seems to be empty")
     } 
@@ -227,9 +241,9 @@ var outStream = new java.io.PrintStream(outFile)
   def compareCards(pCard1:Int, pCard2:Int):Int={
       trump match{
 	      case Ramsch() | Grand()=> 
-	        if(Card.getRank(pCard1)%8==Card.JackModulo && Card.getRank(pCard2)%8==Card.JackModulo) Math.max(pCard1,pCard2) // two Jacks => higher rank wins
-	        else if(Card.getRank(pCard1)%8==Card.JackModulo) pCard1 //one Jack => wins
-	        else if(Card.getRank(pCard2)%8==Card.JackModulo) pCard2 //the other Jack => wins
+	        if(Card.isJack(pCard1) && Card.isJack(pCard2)) Math.max(pCard1,pCard2) // two Jacks => higher rank wins
+	        else if(Card.isJack(pCard1)) pCard1 //one Jack => wins
+	        else if(Card.isJack(pCard2)) pCard2 //the other Jack => wins
 	        else help(-1,pCard1,pCard2)
 	      case Null() => help(-1,pCard1,pCard2)
 	      case Diamonds() =>help(Card.DiamondsQuotient,pCard1,pCard2)
@@ -243,22 +257,24 @@ var outStream = new java.io.PrintStream(outFile)
    * @return the best of two Cards
    */
   def help(trump:Int,pCard1:Int,pCard2:Int):Int={
-    if(Card.getSuit(pCard1)==trump && Card.getSuit(pCard2)==trump||Card.getRank(pCard1)%8==Card.JackModulo && Card.getRank(pCard2)%8==Card.JackModulo){ // both trump
-      if(Card.getRank(pCard1)%8==Card.JackModulo && Card.getRank(pCard2)%8==Card.JackModulo //both Jacks or both not
-          || Card.getRank(pCard1)%8!=Card.JackModulo && Card.getRank(pCard2)%8!=Card.JackModulo){
-        if(Card.getRank(pCard1)%8==Card.TenModulo&&Card.getRank(pCard2)%8!=Card.AceModulo) pCard1 //first is ten and higher
-        else if(Card.getRank(pCard2)%8==Card.TenModulo&&Card.getRank(pCard1)%8!=Card.AceModulo) pCard2 //second is ten and higher
+    if(Card.getSuit(pCard1)==trump && Card.getSuit(pCard2)==trump||Card.isJack(pCard1) && Card.isJack(pCard2)){ // both trump
+      if(Card.isJack(pCard1) && Card.isJack(pCard2) //both Jacks or both not
+          || !Card.isJack(pCard1) && !Card.isJack(pCard2)){
+        if(Card.isTen(pCard1)&& !Card.isAce(pCard2)) pCard1 //first is ten and higher
+        else if(Card.isTen(pCard2)&& !Card.isAce(pCard1)) pCard2 //second is ten and higher
         else Math.max(pCard1,pCard2) //the higher rank wins
       }
-      else if(Card.getRank(pCard1)%8==Card.JackModulo) pCard1 //one is Jack => wins
-      else pCard2 //if(Card.getRank(pCard2)%8==Card.JackModulo) pCard2 //the other is Jack => wins
+      else if(Card.isJack(pCard1)) pCard1 //one is Jack => wins
+      else pCard2 //if(Card.isJack(pCard2)) pCard2 //the other is Jack => wins
     }
-    else if((Card.getSuit(pCard1)==trump || Card.getRank(pCard1)%8==Card.JackModulo) && (Card.getSuit(pCard2)!=trump|| Card.getRank(pCard2)%8!=Card.JackModulo)) pCard1//first is trump, the other not => trump wins
-    else if((Card.getSuit(pCard2)==trump || Card.getRank(pCard2)%8==Card.JackModulo) && (Card.getSuit(pCard1)!=trump|| Card.getRank(pCard1)%8!=Card.JackModulo)) pCard2//the other is trump, the first not => trump wins
+    else if((Card.getSuit(pCard1)==trump || Card.isJack(pCard1)) 
+        && (Card.getSuit(pCard2)!=trump|| !Card.isJack(pCard2))) pCard1//first is trump, the other not => trump wins
+    else if((Card.getSuit(pCard2)==trump || Card.isJack(pCard2)) 
+        && (Card.getSuit(pCard1)!=trump|| !Card.isJack(pCard1))) pCard2//the other is trump, the first not => trump wins
     else{ //no trump
       if(Card.getSuit(pCard1)==Card.getSuit(pCard2)){ //both suits are equal
-        if(Card.getRank(pCard1)%8==Card.TenModulo&&Card.getRank(pCard2)%8!=Card.AceModulo) pCard1 //first is ten and higher
-        else if(Card.getRank(pCard2)%8==Card.TenModulo&&Card.getRank(pCard1)%8!=Card.AceModulo) pCard2 //second is ten and higher
+        if(Card.isTen(pCard1)&& !Card.isAce(pCard2)) pCard1 //first is ten and higher
+        else if(Card.isTen(pCard2)&& !Card.isAce(pCard1)) pCard2 //second is ten and higher
         else Math.max(pCard1,pCard2) //the higher rank wins
       }
       else{ //different suits => first wins

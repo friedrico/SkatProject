@@ -117,8 +117,26 @@ object Card {
          )(pCard)
   }
   
-  
-  
-  
+  def isJack(pCard:Int):Boolean={
+    getRank(pCard)==JackModulo
+  }
+  def isTen(pCard:Int)={
+    getRank(pCard)==TenModulo   
+  }
+  def isAce(pCard:Int):Boolean={
+    getRank(pCard)==AceModulo
+  }
+  def isDiamonds(pCard:Int):Boolean={
+    getSuit(pCard)==DiamondsQuotient
+  }
+  def isHearts(pCard:Int):Boolean={
+    getSuit(pCard)==HeartsQuotient
+  }
+  def isSpades(pCard:Int):Boolean={
+    getSuit(pCard)==SpadesQuotient
+  }
+  def isClubs(pCard:Int):Boolean={
+    getSuit(pCard)==ClubsQuotient
+  }
   
 }

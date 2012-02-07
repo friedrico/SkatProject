@@ -6,7 +6,8 @@ object Main {
     
     val c:Game= new Game
     c.initialize
-    c.playRound(0)
+    c.playGame(0)
+    println(c.tricks)
 
 
   }

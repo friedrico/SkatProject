@@ -133,16 +133,6 @@ case class Grand extends Trump {
  * @author Oliver Friedrich
  *
  */
-case class Ramsch extends Trump {
-  def getMask(): Long = {
-    // 10101010 = Jacks
-    // 00010000000100000001000000010000 = 269488144L = Jacks
-    0x10101010L
-  }
-
-  def getSuit(): Int = {
-    return 6
-  }
-
+case class Ramsch extends Grand {
   override def toString = "Ramsch"
 }

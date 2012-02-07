@@ -12,79 +12,85 @@ import scala.collection.mutable.ListBuffer
  */
 class Player(pFriendIndex: Int, pHand: Hand, pIsComputer:Boolean) {
 	val isComputer = pIsComputer
-	/**
-	 *
-	 */
-	val handCards = pHand
-	/**
-	 *
-	 */
-	val leftLikelihood = new CardLikelihoodMap
-	/**
-	 *
-	 */
-	val rightLikelihood = new CardLikelihoodMap
-	/**
-	 *
-	 */
-	var ownPoints = 0
-	/**
-	 *
-	 */
-	var opposingPoints = 0
-	/**
-	 *
-	 */
-	var friendIndex = pFriendIndex
-	/**
-	 * @param pTrick
-	 * @return
-	 */
+			/**
+			 *
+			 */
+			val handCards = pHand
+			/**
+			 *
+			 */
+			val leftLikelihood = new CardLikelihoodMap
+			/**
+			 *
+			 */
+			val rightLikelihood = new CardLikelihoodMap
+			/**
+			 *
+			 */
+			var ownPoints = 0
+			/**
+			 *
+			 */
+			var opposingPoints = 0
+			/**
+			 *
+			 */
+			var friendIndex = pFriendIndex
+			/**
+			 * @param pTrick
+			 * @return
+			 */
 	def getNextCard(pTrick: ListBuffer[Option[Int]]): Option[Int]= {
 		if(isComputer)
 			None
 		else{
-		  var map=new HashMap[Int,Int]()
-		  var index=1
-		  val sb=new StringBuilder
-		  val sb2=new StringBuilder
-		  sb.append("Current Trick: ")
-		  pTrick.foreach{
-		    rawcard => rawcard match{
-		    	case Some(card)=> sb.append(Card.toString(card))
-		    	case _ => sb.append("_ ")
-		    }
-		  }
-		  sb.append("\n")
-		  for(i<-0 to 31){
-		    pTrick(3) match{
-		      case Some(pCard) => //I'm middle- or rearHand
-		        			if(handCards.filter(Card.getSuit(pCard)).contains(i)){
-				 		      sb.append(Card.toString(i)).append("\t")
-				 		      sb2.append(index.toString).append("\t")
-				 		      map+= index->i 
-						      index=index+1
-					      }
-		      case None=> //I'm forehand - not really nice done...
-			        if(handCards.contains(i)){
-			 		      sb.append(Card.toString(i)).append("\t")
-			 		      sb2.append(index.toString).append("\t")
-			 		      map+= index->i 
-					      index=index+1
-				      }
-
-		    }
-
-		  }
-		  println(sb.append("\n").append(sb2).append("\n").append("Choose a card:"))
-		  var chosen=Console.readInt
-		  while(chosen<1||chosen>=index){
-		    println("The number you have chosen is out of range. Please choose another one")
-		    println(sb)
-		    chosen=Console.readInt
-		  }
-		 // println("You choosed: "+chosen.toString+" which is "+Card.toString(map(chosen)))
-		  Some(map(chosen))
+			var map=new HashMap[Int,Int]()
+			var index=1
+			val sb=new StringBuilder
+			val sb2=new StringBuilder
+			sb.append("Current Trick: ")
+			pTrick.foreach{
+				rawcard => rawcard match{
+					case Some(card)=> sb.append(Card.toString(card))
+					case _ => sb.append("_ ")
+				}
+			}
+			sb.append("\n")
+			for(i<-0 to 31){
+				pTrick(3) match{
+					case Some(pCard) => //I'm middle- or rearHand
+						if(handCards.filter(pCard).contains(i)){
+							sb.append(Card.toString(i)).append("\t")
+							sb2.append(index.toString).append("\t")
+							map+= index->i 
+							index=index+1
+						}
+					case None=> //I'm forehand - not really nice done...
+						if(handCards.contains(i)){
+							sb.append(Card.toString(i)).append("\t")
+							sb2.append(index.toString).append("\t")
+							map+= index->i 
+							index=index+1
+						}
+					}
+			}
+			try{
+				println(sb.append("\n").append(sb2).append("\n").append("Choose a card:"))
+				var chosen=Console.readInt
+				while(chosen<1||chosen>=index){
+					println("The number you have chosen is out of range. Please choose another one")
+					println(sb)
+					chosen=Console.readInt
+				}
+				// println("You choosed: "+chosen.toString+" which is "+Card.toString(map(chosen)))
+				handCards.remove(map(chosen))
+				Some(map(chosen))
+			}
+			catch{
+				case nfe:NumberFormatException =>   println("This is not a number. Please insert a number")
+																getNextCard(pTrick)
+				case e:Exception=> throw e 
+			}
 		}
 	}
 
@@ -96,7 +102,7 @@ class Player(pFriendIndex: Int, pHand: Hand, pIsComputer:Boolean) {
 	def getTrump(): Trump = {
 			// TODO: calculate best trump.
 			var trump:Trump = Ramsch()
-			trump
+					trump
 	}
 
 	def toXML(pId:String) = {
@@ -111,7 +117,7 @@ class Player(pFriendIndex: Int, pHand: Hand, pIsComputer:Boolean) {
 		</player>
 	}
 	def this(pFriendIndex: Int) = this(pFriendIndex, new Hand,true)
-	def this() = this(0, new Hand,true)
-	def this(pFriendIndex: Int,pIsComputer:Boolean) = this(pFriendIndex, new Hand,pIsComputer)
-	def this(pIsComputer:Boolean) = this(0, new Hand,pIsComputer)
+			def this() = this(0, new Hand,true)
+			def this(pFriendIndex: Int,pIsComputer:Boolean) = this(pFriendIndex, new Hand,pIsComputer)
+			def this(pIsComputer:Boolean) = this(0, new Hand,pIsComputer)
 }
