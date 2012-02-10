@@ -11,44 +11,50 @@ import scala.collection.mutable.ListBuffer
  *
  */
 class Player(pFriendIndex: Int, pHand: Hand, pIsComputer:Boolean) {
+	/**
+	 *
+	 */
 	val isComputer = pIsComputer
-			/**
-			 *
-			 */
-			val handCards = pHand
-			/**
-			 *
-			 */
-			val leftLikelihood = new CardLikelihoodMap
-			/**
-			 *
-			 */
-			val rightLikelihood = new CardLikelihoodMap
-			/**
-			 *
-			 */
-			var ownPoints = 0
-			/**
-			 *
-			 */
-			var opposingPoints = 0
-			/**
-			 *
-			 */
-			var friendIndex = pFriendIndex
-			/**
-			 * @param pTrick
-			 * @return
-			 */
+	/**
+	 *
+	 */
+	val handCards = pHand
+	/**
+	 *
+	 */
+	val leftLikelihood = new CardLikelihoodMap
+	/**
+	 *
+	 */
+	val rightLikelihood = new CardLikelihoodMap
+	/**
+	 *
+	 */
+	var ownPoints = 0
+	/**
+	 *
+	 */
+	var opposingPoints = 0
+	/**
+	 *
+	 */
+	var friendIndex = pFriendIndex
+	
+	/**
+	 * @param pTrick
+	 * @return
+	 */
 	def getNextCard(pTrick: ListBuffer[Option[Int]]): Option[Int]= {
-		if(isComputer)
-			None
+		if(isComputer){
+			getNthCard(0,pTrick)
+		}
 		else{
 			var map=new HashMap[Int,Int]()
 			var index=1
 			val sb=new StringBuilder
 			val sb2=new StringBuilder
 			sb.append("Current Trick: ")
+			//convert cards to string
 			pTrick.foreach{
 				rawcard => rawcard match{
 					case Some(card)=> sb.append(Card.toString(card))
@@ -58,8 +64,8 @@ class Player(pFriendIndex: Int, pHand: Hand, pIsComputer:Boolean) {
 			sb.append("\n")
 			for(i<-0 to 31){
 				pTrick(3) match{
-					case Some(pCard) => //I'm middle- or rearHand
-						if(handCards.filter(pCard).contains(i)){
+					case Some(card) => //I'm middle- or rearHand
+						if(handCards.filter(card).contains(i)){
 							sb.append(Card.toString(i)).append("\t")
 							sb2.append(index.toString).append("\t")
 							map+= index->i 
@@ -83,7 +89,6 @@ class Player(pFriendIndex: Int, pHand: Hand, pIsComputer:Boolean) {
 					chosen=Console.readInt
 				}
 				// println("You choosed: "+chosen.toString+" which is "+Card.toString(map(chosen)))
-				handCards.remove(map(chosen))
 				Some(map(chosen))
 			}
 			catch{
@@ -105,6 +110,34 @@ class Player(pFriendIndex: Int, pHand: Hand, pIsComputer:Boolean) {
 					trump
 	}
 
+	def getNthCard(n:Int,pTrick:ListBuffer[Option[Int]]):Option[Int]={
+		var count=0
+		for(i <- 0 to 31){
+			pTrick(3) match{
+				case Some(pCard) => //I'm middle- or rearHand
+					var long=handCards.filter(pCard)
+					if(handCards.filter(pCard).contains(i)){
+						if(count<n)
+							count=count+1
+						else{
+							handCards.remove(i)
+							return Some(i)
+						}
+					}
+				case None => 
+					if(handCards.contains(i)){
+						if(count<n)
+							count=count+1
+						else{
+							handCards.remove(i)
+							return Some(i)
+						}
+					}
+			}
+		}
+		None
+	}
+	
 	def toXML(pId:String) = {
 		<player id={pId}>
 		<hand>{handCards}</hand>

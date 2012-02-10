@@ -8,6 +8,7 @@ import scala.xml.NodeSeq
 import java.text.ParseException
 import scala.collection.mutable.ListBuffer
 import util.Graph
+import scala.util.Random
 
 /**
  * @author Oliver Friedrich
@@ -18,8 +19,10 @@ class Game {
    * A list of players. the players are listed in follow way:
    * player0, player1, player2, player0, player1
    */
-  var players = List(new Player(false), new Player(false))
-  players ++= new Player(false) :: players
+  var players = List(new Player(), new Player())
+    var c:List[Object]=List()
+
+  players ++= new Player() :: players
   /**
    * The two Cards which lent the name to the Game.
    */
@@ -38,7 +41,7 @@ class Game {
 
   var tricks = List[ListBuffer[Option[Int]]]()
   
-  val graph = new Graph[List[Option[Int]],Int] //NodeValue, EdgeValue
+  val graph = new Graph[ListBuffer[Option[Int]],Int] //NodeValue, EdgeValue
   
   
   
@@ -164,7 +167,23 @@ var outStream = new java.io.PrintStream(outFile)
     trumpToOtherPlayers(players(winnerPlayerIndex + 1), trump)
     trumpToOtherPlayers(players(winnerPlayerIndex + 2), trump)
     
-    buildGraph
+  //  buildGraph(winnerPlayerIndex)
+  }
+ def initializeTest = {
+//    players(0).handCards.addCards(12L)
+//    players(1).handCards.addCards(3L)
+//    players(2).handCards.addCards(48L)
+	 players(0).handCards.addCards(0xB3810181L)
+    players(1).handCards.addCards(0x441A5206L)
+    players(2).handCards.addCards(0x08642878L)
+    val winnerPlayerIndex = 0
+    val trump:Trump = players(winnerPlayerIndex).getTrump()
+    trumpToOtherPlayers(players(winnerPlayerIndex + 1), trump)
+    trumpToOtherPlayers(players(winnerPlayerIndex + 2), trump)
+    
+    buildGraph(winnerPlayerIndex)
+println("Size"+graph.nodes.size)   
+
   }
   /**
    * the players bids for the game.
@@ -196,12 +215,12 @@ var outStream = new java.io.PrintStream(outFile)
     currentTrick=ListBuffer(None,None,None,None)
     println("Player: "+startIndex)
     val firstCard=players(startIndex).getNextCard(currentTrick)
-for(i<-1 to 10){println("\n")}
-currentTrick(3)=firstCard
+    for(i<-1 to 10){println("\n")}
+    currentTrick(3)=firstCard
     currentTrick(startIndex)=firstCard
     println("Player: "+(startIndex+1))
     currentTrick((startIndex+1)%3)=players(startIndex+1).getNextCard(currentTrick)
-for(i<-1 to 10){println("\n")}
+    for(i<-1 to 10){println("\n")}
     println("Player: "+(startIndex+2))
     currentTrick((startIndex+2)%3)=players(startIndex+2).getNextCard(currentTrick)
     
@@ -219,10 +238,13 @@ for(i<-1 to 10){println("\n")}
       windex=playRound(windex)
     }
   }
-  
+  /**
+   * Calculates the winner of the given trick. The winner is given as index in the players list
+   * Throws an Exception if the given trick is empty
+   */
   def getWinner(pTrick:ListBuffer[Option[Int]]):Int={
     pTrick match{
-      case ListBuffer(Some(a),Some(b),Some(c),Some(d)) => 
+      case ListBuffer(Some(a),Some(b),Some(c),Some(d),_) => 
         if(compareCards(a,b)==a){
           if(compareCards(a,c)==a) 0 //c<b<a
           else 2 //b<a<c
@@ -296,14 +318,97 @@ for(i<-1 to 10){println("\n")}
    *     else
    *     	max(Rang a, rang b)
    */
-  def buildGraph()={
-    /*
-     * firstPlayerAllHand:play1
-     * snd playPoss
-     * trd playPoss
-     * backtrack: trd playPoss
-     */
-    //var tmpTrick=players(0).getNextCard(None,None,None,None)
-    //var node=graph.addNode()
+  def buildGraph(startIndex:Int)={
+	graph.addNode(ListBuffer())
+    buildGraphRec(startIndex,ListBuffer(),0,0,0)
   }
+  def buildGraphRec(startIndex:Int,parent:ListBuffer[Option[Int]],card0:Int,card1:Int,card2:Int):Int={
+	  /*
+	   * 
+begin
+	if zeile > 8 then -- Loesungsbehandlung:
+		drucke Brett;
+	else
+		for spalte in 1..8 loop
+			if Feld (zeile,spalte) nicht bedroht then
+				Setze Dame auf Feld (zeile,spalte);
+				probiereAbZeile(zeile+1);
+				Entferne Dame von Feld (zeile,spalte);
+			end if;
+		end loop;
+	end if;
+end
+	   */
+	  val curTri:ListBuffer[Option[Int]]=ListBuffer(None,None,None,None,Some(Random.nextInt()))
+	  parent match{
+	  case ListBuffer(_,_,_,None) => 0
+	  case _ =>
+		  for(i<-0 to 10){
+			  val firstCard=players(startIndex).getNthCard(i,curTri)
+			  if(firstCard.isDefined){
+//			  println("First Card: "+firstCard)
+				  curTri(3)=firstCard
+				  curTri(startIndex)=firstCard
+				  for(j<-0 to 10){
+					  val secondCard=players(startIndex+1).getNthCard(j,curTri)
+					  if(secondCard.isDefined){
+//						  println("Second Card: "+secondCard)
+						  curTri((startIndex+1)%3)=secondCard
+						  for(k<-0 to 10){
+							  val thirdCard=players(startIndex+2).getNthCard(k,curTri)
+							  if(thirdCard.isDefined){
+//							  println("Third Card: "+thirdCard)
+									curTri((startIndex+2)%3)=thirdCard
+									curTri(4)=Some(Random.nextInt())
+//									println(curTri)
+									c::=graph.addNode(curTri.clone())
+									graph.addEdge(parent,curTri.clone(),0)
+									var int=buildGraphRec(getWinner(curTri),curTri.clone(),card0+1,0,0)
+									players(startIndex+2).handCards.add(thirdCard.get) //put it back
+//									curTri((startIndex+2)%3)=None
+							  }
+						  }
+						  players(startIndex+1).handCards.add(secondCard.get) //put it back
+//						  curTri((startIndex+1)%3)=None
+					  }
+				  }
+				  players(startIndex).handCards.add(firstCard.get) //put it back
+//				  curTri((startIndex+1)%3)=None
+//				  curTri((startIndex+2)%3)=None	
+//				  curTri((startIndex+3)%3)=None	
+			  }
+			  else{
+			  	//first player cant play a card - end of game.
+			  	return 3
+			  }
+		  }
+		  return 4
+	  }
+//			  currentTrick=ListBuffer(None,None,None,None)
+//					  val firstCard=players(startIndex).getNthCard(card0,currentTrick)
+//					  currentTrick(3)=firstCard
+//					  currentTrick(startIndex)=firstCard
+//					  currentTrick((startIndex+1)%3)=players(startIndex+1).getNthCard(card1,currentTrick)
+//					  currentTrick((startIndex+2)%3)=players(startIndex+2).getNthCard(card2,currentTrick)
+//
+//					  currentTrick match{
+//					  case trick@ListBuffer(Some(x),Some(y),Some(z),_) => //valid => add Edge
+//					  graph.addNode(currentTrick.clone())
+//					  graph.addEdge(parent,currentTrick,0)
+//					  buildGraphRec(getWinner(trick),trick,0,0,0) // build subgraph
+//					  players(2).handCards.add(z)
+//					  false
+//					  case ListBuffer(Some(x),Some(y),None,_) => //2 is invalid => let +1 set another card
+//					  buildGraphRec(startIndex,parent,x,y+1,0)
+//					  players(1).handCards.add(y)
+//					  false
+//					  case ListBuffer(Some(x),None,_,_) => //1 is invalid => let +0 set another card
+//					  buildGraphRec(startIndex,parent,x+1,0,0)
+//					  players(0).handCards.add(x)
+//					  false
+//					  case ListBuffer(_,_,_,None) => //0 is invalid => end
+//					  true
+//			  }
+	  }
+ 
 }
