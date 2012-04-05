@@ -20,7 +20,6 @@ class Game {
    * player0, player1, player2, player0, player1
    */
   var players = List(new Player(), new Player())
-    var c:List[Object]=List()
 
   players ++= new Player() :: players
   /**
@@ -173,16 +172,16 @@ var outStream = new java.io.PrintStream(outFile)
 //    players(0).handCards.addCards(12L)
 //    players(1).handCards.addCards(3L)
 //    players(2).handCards.addCards(48L)
-	 players(0).handCards.addCards(0xB3810181L)
-    players(1).handCards.addCards(0x441A5206L)
-    players(2).handCards.addCards(0x08642878L)
+	 players(0).handCards.addCards(0xFL)
+    players(1).handCards.addCards(1<<8|1<<9|1<<10|1<<11)
+    players(2).handCards.addCards(1<<16|1<<17|1<<18|1<<19)
     val winnerPlayerIndex = 0
     val trump:Trump = players(winnerPlayerIndex).getTrump()
     trumpToOtherPlayers(players(winnerPlayerIndex + 1), trump)
     trumpToOtherPlayers(players(winnerPlayerIndex + 2), trump)
     
     buildGraph(winnerPlayerIndex)
-println("Size"+graph.nodes.size)   
+println("Size "+graph.nodes.size)   
 
   }
   /**
@@ -244,7 +243,7 @@ println("Size"+graph.nodes.size)
    */
   def getWinner(pTrick:ListBuffer[Option[Int]]):Int={
     pTrick match{
-      case ListBuffer(Some(a),Some(b),Some(c),Some(d),_) => 
+      case ListBuffer(Some(a),Some(b),Some(c),Some(d)) => 
         if(compareCards(a,b)==a){
           if(compareCards(a,c)==a) 0 //c<b<a
           else 2 //b<a<c
@@ -339,7 +338,7 @@ begin
 	end if;
 end
 	   */
-	  val curTri:ListBuffer[Option[Int]]=ListBuffer(None,None,None,None,Some(Random.nextInt()))
+	  val curTri:ListBuffer[Option[Int]]=ListBuffer(None,None,None,None)
 	  parent match{
 	  case ListBuffer(_,_,_,None) => 0
 	  case _ =>
@@ -359,11 +358,11 @@ end
 							  if(thirdCard.isDefined){
 //							  println("Third Card: "+thirdCard)
 									curTri((startIndex+2)%3)=thirdCard
-									curTri(4)=Some(Random.nextInt())
 //									println(curTri)
-									c::=graph.addNode(curTri.clone())
-									graph.addEdge(parent,curTri.clone(),0)
-									var int=buildGraphRec(getWinner(curTri),curTri.clone(),card0+1,0,0)
+									val clone=curTri.clone()
+									graph.addNode(clone)
+									graph.addEdge(parent,clone,0)
+									var int=buildGraphRec(getWinner(curTri),clone,card0+1,0,0)
 									players(startIndex+2).handCards.add(thirdCard.get) //put it back
 //									curTri((startIndex+2)%3)=None
 							  }
